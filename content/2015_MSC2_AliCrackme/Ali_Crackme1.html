@@ -308,9 +308,9 @@ img {
 &lt;/manifest&gt;
 </code></pre>
 
-<p>入口为Main类，跟进去
-    package k2015.a1;</p>
-<pre><code>import android.app.Activity;
+<p>入口为Main类，跟进去</p>
+<pre><code>package k2015.a1;
+import android.app.Activity;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Looper;
@@ -490,7 +490,7 @@ goto/16 :goto_0
 <pre><code>const/4 v4, 0x1
 </code></pre>
 
-<p>v4不等于0，那么将v4赋值1</p>
+<p>v4等于0，那么将v4赋值1</p>
 <p>可以发现这里最后都要跳转执行goto/16:goto_0
 那么，这一步干了什么呢？，继续跟踪</p>
 <p><img src="./Image/5.png" /></p>

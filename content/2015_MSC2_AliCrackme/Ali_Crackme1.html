@@ -1,0 +1,541 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Ali_Crackme1</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<style type="text/css">
+/* GitHub stylesheet for MarkdownPad (http://markdownpad.com) */
+/* Author: Nicolas Hery - http://nicolashery.com */
+/* Version: b13fe65ca28d2e568c6ed5d7f06581183df8f2ff */
+/* Source: https://github.com/nicolahery/markdownpad-github */
+
+/* RESET
+=============================================================================*/
+
+html, body, div, span, applet, object, iframe, h1, h2, h3, h4, h5, h6, p, blockquote, pre, a, abbr, acronym, address, big, cite, code, del, dfn, em, img, ins, kbd, q, s, samp, small, strike, strong, sub, sup, tt, var, b, u, i, center, dl, dt, dd, ol, ul, li, fieldset, form, label, legend, table, caption, tbody, tfoot, thead, tr, th, td, article, aside, canvas, details, embed, figure, figcaption, footer, header, hgroup, menu, nav, output, ruby, section, summary, time, mark, audio, video {
+  margin: 0;
+  padding: 0;
+  border: 0;
+}
+
+/* BODY
+=============================================================================*/
+
+body {
+  font-family: Helvetica, arial, freesans, clean, sans-serif;
+  font-size: 14px;
+  line-height: 1.6;
+  color: #333;
+  background-color: #fff;
+  padding: 20px;
+  max-width: 960px;
+  margin: 0 auto;
+}
+
+body>*:first-child {
+  margin-top: 0 !important;
+}
+
+body>*:last-child {
+  margin-bottom: 0 !important;
+}
+
+/* BLOCKS
+=============================================================================*/
+
+p, blockquote, ul, ol, dl, table, pre {
+  margin: 15px 0;
+}
+
+/* HEADERS
+=============================================================================*/
+
+h1, h2, h3, h4, h5, h6 {
+  margin: 20px 0 10px;
+  padding: 0;
+  font-weight: bold;
+  -webkit-font-smoothing: antialiased;
+}
+
+h1 tt, h1 code, h2 tt, h2 code, h3 tt, h3 code, h4 tt, h4 code, h5 tt, h5 code, h6 tt, h6 code {
+  font-size: inherit;
+}
+
+h1 {
+  font-size: 28px;
+  color: #000;
+}
+
+h2 {
+  font-size: 24px;
+  border-bottom: 1px solid #ccc;
+  color: #000;
+}
+
+h3 {
+  font-size: 18px;
+}
+
+h4 {
+  font-size: 16px;
+}
+
+h5 {
+  font-size: 14px;
+}
+
+h6 {
+  color: #777;
+  font-size: 14px;
+}
+
+body>h2:first-child, body>h1:first-child, body>h1:first-child+h2, body>h3:first-child, body>h4:first-child, body>h5:first-child, body>h6:first-child {
+  margin-top: 0;
+  padding-top: 0;
+}
+
+a:first-child h1, a:first-child h2, a:first-child h3, a:first-child h4, a:first-child h5, a:first-child h6 {
+  margin-top: 0;
+  padding-top: 0;
+}
+
+h1+p, h2+p, h3+p, h4+p, h5+p, h6+p {
+  margin-top: 10px;
+}
+
+/* LINKS
+=============================================================================*/
+
+a {
+  color: #4183C4;
+  text-decoration: none;
+}
+
+a:hover {
+  text-decoration: underline;
+}
+
+/* LISTS
+=============================================================================*/
+
+ul, ol {
+  padding-left: 30px;
+}
+
+ul li > :first-child, 
+ol li > :first-child, 
+ul li ul:first-of-type, 
+ol li ol:first-of-type, 
+ul li ol:first-of-type, 
+ol li ul:first-of-type {
+  margin-top: 0px;
+}
+
+ul ul, ul ol, ol ol, ol ul {
+  margin-bottom: 0;
+}
+
+dl {
+  padding: 0;
+}
+
+dl dt {
+  font-size: 14px;
+  font-weight: bold;
+  font-style: italic;
+  padding: 0;
+  margin: 15px 0 5px;
+}
+
+dl dt:first-child {
+  padding: 0;
+}
+
+dl dt>:first-child {
+  margin-top: 0px;
+}
+
+dl dt>:last-child {
+  margin-bottom: 0px;
+}
+
+dl dd {
+  margin: 0 0 15px;
+  padding: 0 15px;
+}
+
+dl dd>:first-child {
+  margin-top: 0px;
+}
+
+dl dd>:last-child {
+  margin-bottom: 0px;
+}
+
+/* CODE
+=============================================================================*/
+
+pre, code, tt {
+  font-size: 12px;
+  font-family: Consolas, "Liberation Mono", Courier, monospace;
+}
+
+code, tt {
+  margin: 0 0px;
+  padding: 0px 0px;
+  white-space: nowrap;
+  border: 1px solid #eaeaea;
+  background-color: #f8f8f8;
+  border-radius: 3px;
+}
+
+pre>code {
+  margin: 0;
+  padding: 0;
+  white-space: pre;
+  border: none;
+  background: transparent;
+}
+
+pre {
+  background-color: #f8f8f8;
+  border: 1px solid #ccc;
+  font-size: 13px;
+  line-height: 19px;
+  overflow: auto;
+  padding: 6px 10px;
+  border-radius: 3px;
+}
+
+pre code, pre tt {
+  background-color: transparent;
+  border: none;
+}
+
+kbd {
+    -moz-border-bottom-colors: none;
+    -moz-border-left-colors: none;
+    -moz-border-right-colors: none;
+    -moz-border-top-colors: none;
+    background-color: #DDDDDD;
+    background-image: linear-gradient(#F1F1F1, #DDDDDD);
+    background-repeat: repeat-x;
+    border-color: #DDDDDD #CCCCCC #CCCCCC #DDDDDD;
+    border-image: none;
+    border-radius: 2px 2px 2px 2px;
+    border-style: solid;
+    border-width: 1px;
+    font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;
+    line-height: 10px;
+    padding: 1px 4px;
+}
+
+/* QUOTES
+=============================================================================*/
+
+blockquote {
+  border-left: 4px solid #DDD;
+  padding: 0 15px;
+  color: #777;
+}
+
+blockquote>:first-child {
+  margin-top: 0px;
+}
+
+blockquote>:last-child {
+  margin-bottom: 0px;
+}
+
+/* HORIZONTAL RULES
+=============================================================================*/
+
+hr {
+  clear: both;
+  margin: 15px 0;
+  height: 0px;
+  overflow: hidden;
+  border: none;
+  background: transparent;
+  border-bottom: 4px solid #ddd;
+  padding: 0;
+}
+
+/* TABLES
+=============================================================================*/
+
+table th {
+  font-weight: bold;
+}
+
+table th, table td {
+  border: 1px solid #ccc;
+  padding: 6px 13px;
+}
+
+table tr {
+  border-top: 1px solid #ccc;
+  background-color: #fff;
+}
+
+table tr:nth-child(2n) {
+  background-color: #f8f8f8;
+}
+
+/* IMAGES
+=============================================================================*/
+
+img {
+  max-width: 100%
+}
+</style>
+</head>
+<body>
+<h2>2015 MSC 阿里移动安全第一题</h2>
+<p><img src="./Image/1.png" /></p>
+<p>首先拖入jeb进行分析：
+常规流程，先查看AndroidMainfest.xml文件</p>
+<pre><code>&lt;?xml version=&quot;1.0&quot; encoding=&quot;utf-8&quot;?&gt;
+&lt;manifest package=&quot;k2015.a1&quot; platformBuildVersionCode=&quot;10&quot; platformBuildVersionName=&quot;2.3.3&quot; xmlns:android=&quot;http://schemas.android.com/apk/res/android&quot;&gt;
+&lt;application android:icon=&quot;@drawable/icon&quot; android:label=&quot;@string/app_name&quot;&gt;
+    &lt;activity android:label=&quot;@string/app_name&quot; android:name=&quot;Main&quot;&gt;
+        &lt;intent-filter&gt;
+            &lt;action android:name=&quot;android.intent.action.MAIN&quot; /&gt;
+            &lt;category android:name=&quot;android.intent.category.LAUNCHER&quot; /&gt;
+        &lt;/intent-filter&gt;
+    &lt;/activity&gt;
+&lt;/application&gt;
+&lt;/manifest&gt;
+</code></pre>
+
+<p>入口为Main类，跟进去
+    package k2015.a1;</p>
+<pre><code>import android.app.Activity;
+import android.os.Bundle;
+import android.os.Handler;
+import android.os.Looper;
+import android.os.Message;
+import android.view.View$OnClickListener;
+import android.view.View;
+import android.widget.Button;
+import android.widget.TextView;
+
+public class Main extends Activity {
+class k2015.a1.Main$1 extends Handler { //新建了一个Handler类，用于消息传递
+    k2015.a1.Main$1(Main arg1, Looper arg2) {  //分别传递一个Main类和一个Looper类，Looper类的loop()方法用于读取消息队列中的消息，读完消息后，将消息发送给Handler处理
+        Main.this = arg1;
+        super(arg2);
+    }
+
+    public void handleMessage(Message arg5) {
+        Main.this.btn.setEnabled(true);
+        switch(arg5.what) {  //what为指定值的消息
+            case 0: {
+                goto label_7;  //正确分支
+            }
+            case 3: {
+                goto label_24;
+            }
+        }
+
+        return;
+    label_7:
+        Main.this.tv.setTextColor(-16776961);
+        try {
+            Main.this.tv.setText(103 / arg5.what);
+        }
+        catch(Exception v0) {
+            Main.this.tv.setText(2130968581);//成功显示，对!就是这个阻碍了Cobb, 好样的!，可以查找对应的资源文件
+        }
+
+        return;
+    label_24:
+        Main.this.tv.setTextColor(-65536);
+        Main.this.tv.setText(2130968580);
+    }
+}
+
+Button btn;
+Button btn2;
+private Handler handler;
+TextView tv;
+
+public Main() {
+    super();
+    this.handler = new k2015.a1.Main$1(this, Looper.myLooper());
+}
+
+static Handler access$000(Main arg1) {
+    return arg1.handler;
+}
+
+public void onCreate(Bundle arg4) {
+    super.onCreate(arg4);
+    this.setContentView(2130903040);
+    this.btn = this.findViewById(2131034115);
+    this.tv = this.findViewById(2131034116);
+    this.btn.setOnClickListener(new View$OnClickListener(this.findViewById(2131034114)) {
+        public void onClick(View arg4) {
+            Main.this.btn.setEnabled(false);
+            new Thread(this.val$text.getText().toString()) {  //创建一个线程类
+                public void run() {
+                    int v1;
+                    Handler v3;
+                    int v2 = 3;
+                    try {
+                        v3 = this.this$1.this$0.handler;
+                        if(Check.check(this.val$in)) { //输入值传入Check.check()方法
+                            v1 = 0;
+                        }
+                        else {
+                            goto label_10;
+                        }
+
+                        goto label_8;
+                    }
+                    catch(Exception v0) {
+                        goto label_13;
+                    }
+
+                label_10:
+                    v1 = v2;
+                    try {
+                    label_8:
+                        v3.sendEmptyMessage(v1);  //发送0
+                    }
+                    catch(Exception v0) {
+                    label_13:
+                        v0.printStackTrace();
+                        this.this$1.this$0.handler.sendEmptyMessage(v2); //发送3
+                    }
+                }
+            }.start();
+        }
+    });
+}
+}
+</code></pre>
+
+<p>那么思路很清晰了，我们需要Check.check(输入的值),然后返回真即可，那么跟进分析Check.check方法
+这里可以发现这里添加了很多混淆：</p>
+<p><img src="./Image/2.png" /></p>
+<p>那么换个角度分析下，这个Check.check()方法必然会返回一个Boolean值，那么，ctrl+F开启搜索，发现有四处返回了值，判断一下，那么很显然，这里是正确的分支：</p>
+<p><img src="./Image/3.png" /></p>
+<p>那么这里便是关键代码：</p>
+<pre><code>try {
+        v14_2.invoke(v13_2.invoke(v4_4, v12_2.invoke(v6.invoke(v5_3.newInstance(new String(new BigInteger(v15_1).divide(BigInteger.valueOf(((long)(v15_1[1] - 42)))).toByteArray(), &quot;UTF-8&quot;)))), v7_4)).booleanValue();
+    }
+    catch(InvocationTargetException v4_1) {
+        try {
+        label_14726:
+            v5_1 = Class.forName(new StringBuilder(&quot;noitpecxEtegraTnoitacovnI.tcelfer.gnal.avaj&quot;).reverse().toString()).getMethod(new StringBuilder(&quot;noitpecxEtegraTteg&quot;).reverse().toString(), null);
+            ((AccessibleObject)v5_1).setAccessible(true);
+            throw v5_1.invoke(v4_1);
+        }
+        catch(InvocationTargetException v4_1) {
+            throw v4_1.getTargetException();
+        }
+    }
+
+    if(v8_7 % 1000000 + 124750 == v10_3) {
+        return true;
+    }
+
+    return false;
+</code></pre>
+
+<p>可以看到判断条件为</p>
+<pre><code>v8_7 % 1000000 + 124750 == v10_3
+</code></pre>
+
+<p>那么v8_7和v10_3分别是啥呢？，往上翻，可以发现上面只有这一处调用了：</p>
+<pre><code>long v8_7 = v12_2.invoke(v9_2.invoke(v5_4, v8_2.invoke(v4_4, v16_3, v6.invoke(null, Integer.valueOf(((int)(7 + (1 + v10_3) * v10_3 * (2 + v10_3) % 6))))))).longValue();
+</code></pre>
+
+<p>这是v12_2:</p>
+<pre><code>v12_2 = Class.forName(new StringBuilder(&quot;gnoL.gnal.avaj&quot;).reverse().toString()).getMethod(new String(new BigInteger(v12_1).divide(BigInteger.valueOf(((long)(58 - v12_1[6])))).toByteArray(), &quot;UTF-8&quot;), null);
+</code></pre>
+
+<p>开始想的是要么从算法下手，但是似乎这道题干扰项太多，所以试试利用插桩法，直接将v8_7和v10_3的值打印出来，似乎这样更加简便快捷，那么我们换个工具下手，因为JEB并不支持添加smali代码</p>
+<hr />
+<p>打开AndroidKiller，搜索124750，会发现搜不到，那么转换为十六进制，也就是0x1e74e,看看哪里调用了：</p>
+<p><img src="./Image/4.png" /></p>
+<p>那么来分析这一块的调用：</p>
+<pre><code>cmp-long v4, v4, v10
+
+if-nez v4, :cond_3
+
+const/4 v4, 0x1
+goto/16 :goto_0
+</code></pre>
+
+<p>这里有一个关键的比较</p>
+<p>第一句</p>
+<pre><code>cmp-long v4, v4, v10
+</code></pre>
+
+<p>比较v4和v10,如果v4&gt;v10，则返回1，相等则返回0，小于则返回-1，并将返回值保存到v4寄存器</p>
+<p>第二句</p>
+<pre><code>if-nez v4, :cond_3
+</code></pre>
+
+<p>如果v4不等于0，则执行条件三</p>
+<pre><code>:cond_3
+const/4 v4, 0x0
+goto/16 :goto_0
+</code></pre>
+
+<p>条件三，将v4值赋为0</p>
+<p>第三句</p>
+<pre><code>const/4 v4, 0x1
+</code></pre>
+
+<p>v4不等于0，那么将v4赋值1</p>
+<p>可以发现这里最后都要跳转执行goto/16:goto_0
+那么，这一步干了什么呢？，继续跟踪</p>
+<p><img src="./Image/5.png" /></p>
+<p>那么分析一下，发现只有这里返回了v4，那么显然这是正确的分支</p>
+<hr />
+<p>好，思路大致理清楚了，现在开始插桩，看看v4,v10到底是个啥？
+添加几行代码：</p>
+<pre><code>const-wide/32 v6, 0x1e74e
+
+add-long/2addr v4, v6
+invoke-static {v10, v11}, Ljava/lang/Long;-&gt;toString(J)Ljava/lang/String;//因为v10是long类型，值需要两个寄存器保存，此处将v10，v11寄存器保存的值转换为字符串
+
+move-result-object v1  //返回给v1
+
+invoke-static {v1, v1}, Landroid/util/Log;-&gt;d(Ljava/lang/String;Ljava/lang/String;)I  //打印v1
+
+ //v4同理
+invoke-static {v4, v5}, Ljava/lang/Long;-&gt;toString(J)Ljava/lang/String;
+
+move-result-object v1
+
+invoke-static {v1, v1}, Landroid/util/Log;-&gt;d(Ljava/lang/String;Ljava/lang/String;)I
+
+cmp-long v4, v4, v10
+
+if-nez v4, :cond_3
+
+const/4 v4, 0x1
+
+goto/16 :goto_0
+</code></pre>
+
+<p>那么下面保存后反编译</p>
+<p><img src="./Image/6.png" /></p>
+<p>反编译成功，下面打开DDMS，开始分析运行：</p>
+<p>我分三次，分别输入了1，2，3作为输入值，结果如下：</p>
+<p><img src="./Image/7.png" /></p>
+<p><img src="./Image/8.png" /></p>
+<p><img src="./Image/9.png" /></p>
+<p>可以发现v10的值为124750+输入的值，v4的值恒不变，为520676，那么还记得刚才的判断么，我们要让他返回true，那么v4就要为0，那么我们就需要v4,v10相等，那么表达式就是</p>
+<p>124750+输入 == 520676，那么输入值即为395926</p>
+<hr />
+<p><img src="./Image/10.png" /></p>
+<p>成功！！！！</p>
+
+</body>
+</html>
+<!-- This document was created with MarkdownPad, the Markdown editor for Windows (http://markdownpad.com) -->

@@ -1,0 +1,542 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>write-up</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<style type="text/css">
+/* GitHub stylesheet for MarkdownPad (http://markdownpad.com) */
+/* Author: Nicolas Hery - http://nicolashery.com */
+/* Version: b13fe65ca28d2e568c6ed5d7f06581183df8f2ff */
+/* Source: https://github.com/nicolahery/markdownpad-github */
+
+/* RESET
+=============================================================================*/
+
+html, body, div, span, applet, object, iframe, h1, h2, h3, h4, h5, h6, p, blockquote, pre, a, abbr, acronym, address, big, cite, code, del, dfn, em, img, ins, kbd, q, s, samp, small, strike, strong, sub, sup, tt, var, b, u, i, center, dl, dt, dd, ol, ul, li, fieldset, form, label, legend, table, caption, tbody, tfoot, thead, tr, th, td, article, aside, canvas, details, embed, figure, figcaption, footer, header, hgroup, menu, nav, output, ruby, section, summary, time, mark, audio, video {
+  margin: 0;
+  padding: 0;
+  border: 0;
+}
+
+/* BODY
+=============================================================================*/
+
+body {
+  font-family: Helvetica, arial, freesans, clean, sans-serif;
+  font-size: 14px;
+  line-height: 1.6;
+  color: #333;
+  background-color: #fff;
+  padding: 20px;
+  max-width: 960px;
+  margin: 0 auto;
+}
+
+body>*:first-child {
+  margin-top: 0 !important;
+}
+
+body>*:last-child {
+  margin-bottom: 0 !important;
+}
+
+/* BLOCKS
+=============================================================================*/
+
+p, blockquote, ul, ol, dl, table, pre {
+  margin: 15px 0;
+}
+
+/* HEADERS
+=============================================================================*/
+
+h1, h2, h3, h4, h5, h6 {
+  margin: 20px 0 10px;
+  padding: 0;
+  font-weight: bold;
+  -webkit-font-smoothing: antialiased;
+}
+
+h1 tt, h1 code, h2 tt, h2 code, h3 tt, h3 code, h4 tt, h4 code, h5 tt, h5 code, h6 tt, h6 code {
+  font-size: inherit;
+}
+
+h1 {
+  font-size: 28px;
+  color: #000;
+}
+
+h2 {
+  font-size: 24px;
+  border-bottom: 1px solid #ccc;
+  color: #000;
+}
+
+h3 {
+  font-size: 18px;
+}
+
+h4 {
+  font-size: 16px;
+}
+
+h5 {
+  font-size: 14px;
+}
+
+h6 {
+  color: #777;
+  font-size: 14px;
+}
+
+body>h2:first-child, body>h1:first-child, body>h1:first-child+h2, body>h3:first-child, body>h4:first-child, body>h5:first-child, body>h6:first-child {
+  margin-top: 0;
+  padding-top: 0;
+}
+
+a:first-child h1, a:first-child h2, a:first-child h3, a:first-child h4, a:first-child h5, a:first-child h6 {
+  margin-top: 0;
+  padding-top: 0;
+}
+
+h1+p, h2+p, h3+p, h4+p, h5+p, h6+p {
+  margin-top: 10px;
+}
+
+/* LINKS
+=============================================================================*/
+
+a {
+  color: #4183C4;
+  text-decoration: none;
+}
+
+a:hover {
+  text-decoration: underline;
+}
+
+/* LISTS
+=============================================================================*/
+
+ul, ol {
+  padding-left: 30px;
+}
+
+ul li > :first-child, 
+ol li > :first-child, 
+ul li ul:first-of-type, 
+ol li ol:first-of-type, 
+ul li ol:first-of-type, 
+ol li ul:first-of-type {
+  margin-top: 0px;
+}
+
+ul ul, ul ol, ol ol, ol ul {
+  margin-bottom: 0;
+}
+
+dl {
+  padding: 0;
+}
+
+dl dt {
+  font-size: 14px;
+  font-weight: bold;
+  font-style: italic;
+  padding: 0;
+  margin: 15px 0 5px;
+}
+
+dl dt:first-child {
+  padding: 0;
+}
+
+dl dt>:first-child {
+  margin-top: 0px;
+}
+
+dl dt>:last-child {
+  margin-bottom: 0px;
+}
+
+dl dd {
+  margin: 0 0 15px;
+  padding: 0 15px;
+}
+
+dl dd>:first-child {
+  margin-top: 0px;
+}
+
+dl dd>:last-child {
+  margin-bottom: 0px;
+}
+
+/* CODE
+=============================================================================*/
+
+pre, code, tt {
+  font-size: 12px;
+  font-family: Consolas, "Liberation Mono", Courier, monospace;
+}
+
+code, tt {
+  margin: 0 0px;
+  padding: 0px 0px;
+  white-space: nowrap;
+  border: 1px solid #eaeaea;
+  background-color: #f8f8f8;
+  border-radius: 3px;
+}
+
+pre>code {
+  margin: 0;
+  padding: 0;
+  white-space: pre;
+  border: none;
+  background: transparent;
+}
+
+pre {
+  background-color: #f8f8f8;
+  border: 1px solid #ccc;
+  font-size: 13px;
+  line-height: 19px;
+  overflow: auto;
+  padding: 6px 10px;
+  border-radius: 3px;
+}
+
+pre code, pre tt {
+  background-color: transparent;
+  border: none;
+}
+
+kbd {
+    -moz-border-bottom-colors: none;
+    -moz-border-left-colors: none;
+    -moz-border-right-colors: none;
+    -moz-border-top-colors: none;
+    background-color: #DDDDDD;
+    background-image: linear-gradient(#F1F1F1, #DDDDDD);
+    background-repeat: repeat-x;
+    border-color: #DDDDDD #CCCCCC #CCCCCC #DDDDDD;
+    border-image: none;
+    border-radius: 2px 2px 2px 2px;
+    border-style: solid;
+    border-width: 1px;
+    font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;
+    line-height: 10px;
+    padding: 1px 4px;
+}
+
+/* QUOTES
+=============================================================================*/
+
+blockquote {
+  border-left: 4px solid #DDD;
+  padding: 0 15px;
+  color: #777;
+}
+
+blockquote>:first-child {
+  margin-top: 0px;
+}
+
+blockquote>:last-child {
+  margin-bottom: 0px;
+}
+
+/* HORIZONTAL RULES
+=============================================================================*/
+
+hr {
+  clear: both;
+  margin: 15px 0;
+  height: 0px;
+  overflow: hidden;
+  border: none;
+  background: transparent;
+  border-bottom: 4px solid #ddd;
+  padding: 0;
+}
+
+/* TABLES
+=============================================================================*/
+
+table th {
+  font-weight: bold;
+}
+
+table th, table td {
+  border: 1px solid #ccc;
+  padding: 6px 13px;
+}
+
+table tr {
+  border-top: 1px solid #ccc;
+  background-color: #fff;
+}
+
+table tr:nth-child(2n) {
+  background-color: #f8f8f8;
+}
+
+/* IMAGES
+=============================================================================*/
+
+img {
+  max-width: 100%
+}
+</style>
+</head>
+<body>
+<h2>write up</h2>
+<p>用jadx打开apk文件，为啥不用jeb呢，方便查看函数而已，jeb方便修改</p>
+<pre><code>package com.example.ring.myapplication;
+
+import android.content.pm.ApplicationInfo;
+import android.os.Bundle;
+import android.support.v7.a.q;
+import android.widget.Button;
+import java.io.InputStream;
+
+public class MainActivity extends q {
+private String v;
+
+protected void onCreate(Bundle bundle) {
+    super.onCreate(bundle);
+    setContentView((int) R.layout.activity_main);
+    ApplicationInfo applicationInfo = getApplicationInfo();
+    int i = applicationInfo.flags &amp; 2;  //进行“与”运算
+    applicationInfo.flags = i;      //等价于applicationInfo.flags &amp;= 2
+    if (i != 0) { //无论条件成不成立，后续操作相同
+        p();
+        ((Button) findViewById(R.id.sureButton)).setOnClickListener(new d(this));
+    } else {
+        p();
+        ((Button) findViewById(R.id.sureButton)).setOnClickListener(new d(this));
+    }
+}
+
+private void p() {
+    try {
+        InputStream open = getResources().getAssets().open(&quot;url.png&quot;); //从assets文件夹下读取url.png
+        int available = open.available(); //返回在不堵塞情况下，一次读取到的数据长度
+        Object obj = new byte[available];
+        open.read(obj, 0, available);
+        Object obj2 = new byte[16];
+        System.arraycopy(obj, 144, obj2, 0, 16); //复制,obj源数组，144源数组起始位置，obj2目标数组，0起始位置，16长度
+        this.v = new String(obj2, &quot;utf-8&quot;);
+    } catch (Exception e) {
+        e.printStackTrace();
+    }
+}
+
+private boolean a(String str, String str2) {
+    return new c().a(str, str2).equals(new String(new byte[]{(byte) 21, (byte) -93, (byte) -68, (byte) -94, (byte) 86, (byte) 117, (byte) -19, (byte) -68, (byte) -92, (byte) 33, (byte) 50, (byte) 118, (byte) 16, (byte) 13, (byte) 1, (byte) -15, (byte) -13, (byte) 3, (byte) 4, (byte) 103, (byte) -18, (byte) 81, (byte) 30, (byte) 68, (byte) 54, (byte) -93, (byte) 44, (byte) -23, (byte) 93, (byte) 98, (byte) 5, (byte) 59}));
+}
+}
+</code></pre>
+
+<p>那么下面继续跟进d类：</p>
+<pre><code>package com.example.ring.myapplication;
+
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.widget.EditText;
+import android.widget.TextView;
+import android.widget.Toast;
+
+class d implements OnClickListener {
+final /* synthetic */ MainActivity a;
+
+d(MainActivity mainActivity) {
+    this.a = mainActivity; //初始化
+}
+
+public void onClick(View view) {
+    if (this.a.a(this.a.v, ((EditText) this.a.findViewById(R.id.passCode)).getText().toString())) {
+        TextView textView = (TextView) this.a.findViewById(R.id.textView);
+        Toast.makeText(this.a.getApplicationContext(), &quot;Congratulations!&quot;, 1).show();  //那么这是正确分支
+        textView.setText(R.string.nice);
+        return;
+    }
+    Toast.makeText(this.a.getApplicationContext(), &quot;Oh no.&quot;, 1).show();
+}
+}
+</code></pre>
+
+<p>关键代码：</p>
+<pre><code>  if (mainActivity.a(mainActivity.v, ((EditText) mainActivity.findViewById(R.id.passCode)).getText().toString())) 
+</code></pre>
+
+<p>那么先求出mainActivity.v的值：</p>
+<p>新建一个项目，将url.png拷贝到src目录下</p>
+<pre><code>import java.io.File;
+import java.io.FileInputStream;
+
+/**
+ * Created by mask on 2017/3/27.
+ */
+public class LCTF_easy {
+
+public static void main(String[] args) throws Exception{
+    p();
+}
+
+public static void p() {
+    try {
+        File file = new File(&quot;.\\src\\url.png&quot;);
+        FileInputStream inputStream_url_png = new FileInputStream(file);
+        int url_png_length = inputStream_url_png.available(); 
+        byte[] url_png_byte = new byte[url_png_length];  
+        inputStream_url_png.read(url_png_byte, 0, url_png_length);  
+        byte[] v0_2 = new byte[16];
+        System.arraycopy(url_png_byte, 144, v0_2, 0, 16);
+        String string_url_png = new String(v0_2, &quot;utf-8&quot;);
+        System.out.println(string_url_png);
+    }
+    catch(Exception v0) {
+        v0.printStackTrace();
+    }
+}
+}
+</code></pre>
+
+<p><img src="./Image/1.png" /></p>
+<p>那么v的值就是this_is_the_key.</p>
+<p>第二个参数，就是我们要输入的东东，然后我们把这两个参数传入到mainActivity.a()函数</p>
+<pre><code>private boolean a(String str, String str2) {
+    return new c().a(str, str2).equals(new String(new byte[]{(byte) 21, (byte) -93, (byte) -68, (byte) -94, (byte) 86, (byte) 117, (byte) -19, (byte) -68, (byte) -92, (byte) 33, (byte) 50, (byte) 118, (byte) 16, (byte) 13, (byte) 1, (byte) -15, (byte) -13, (byte) 3, (byte) 4, (byte) 103, (byte) -18, (byte) 81, (byte) 30, (byte) 68, (byte) 54, (byte) -93, (byte) 44, (byte) -23, (byte) 93, (byte) 98, (byte) 5, (byte) 59}));
+}
+</code></pre>
+
+<p>下面跟进c类查看：</p>
+<pre><code>package com.example.ring.myapplication;
+
+import java.io.UnsupportedEncodingException;
+
+public class c {
+public String a(String str, String str2) {
+    String a = a(str); //将str初始化，即将this_is_the_key.进行初始化
+    String str3 = &quot;&quot;;
+    a aVar = new a(); //新建一个a类
+    aVar.a(a.getBytes()); 
+    try {
+        return new String(aVar.b(str2.getBytes()), &quot;utf-8&quot;);
+    } catch (Exception e) {
+        e.printStackTrace();
+        return str3;
+    }
+}
+
+private String a(String str) {
+    try {
+        str.getBytes(&quot;utf-8&quot;);
+        StringBuilder stringBuilder = new StringBuilder();
+        for (int i = 0; i &lt; str.length(); i += 2) {
+            stringBuilder.append(str.charAt(i + 1));
+            stringBuilder.append(str.charAt(i));
+        }
+        return stringBuilder.toString();
+    } catch (UnsupportedEncodingException e) {
+        e.printStackTrace();
+        return null;
+    }
+}
+}
+</code></pre>
+
+<p>跟进a类进行查看：</p>
+<pre><code>package com.example.ring.myapplication;
+
+import java.io.UnsupportedEncodingException;
+import java.security.MessageDigest;
+import java.security.NoSuchAlgorithmException;
+import javax.crypto.Cipher;
+import javax.crypto.NoSuchPaddingException;
+import javax.crypto.spec.SecretKeySpec;
+
+public class a {
+private SecretKeySpec a;
+private Cipher b;
+
+protected void a(byte[] bArr) {
+    if (bArr == null) { //是否有盐，盐为空
+        try {
+            this.a = new SecretKeySpec(MessageDigest.getInstance(&quot;MD5&quot;).digest(&quot;&quot;.getBytes(&quot;utf-8&quot;)), &quot;AES&quot;);
+            this.b = Cipher.getInstance(&quot;AES/ECB/PKCS5Padding&quot;);
+            return;
+        } catch (UnsupportedEncodingException e) {
+            e.printStackTrace();
+            return;
+        } catch (NoSuchAlgorithmException e2) {
+            e2.printStackTrace();
+            return;
+        } catch (NoSuchPaddingException e3) {
+            e3.printStackTrace();
+            return;
+        }
+    }
+    this.a = new SecretKeySpec(bArr, &quot;AES&quot;); //盐不为空，则传入
+    this.b = Cipher.getInstance(&quot;AES/ECB/PKCS5Padding&quot;);
+}
+
+protected byte[] b(byte[] bArr) {
+    this.b.init(1, this.a);
+    return this.b.doFinal(bArr);
+}
+}
+</code></pre>
+
+<p>可以发现这是一个加密类，
+那么顺序大致理清楚了，开始写脚本：</p>
+<pre><code>public static void main(String[] args) throws Exception{
+
+    Deryption();
+}
+
+
+
+public static void Deryption() {
+    byte[] content = new byte[]{21, -93, -68, -94, 86, 117, -19, -68, -92, 33, 50, 118, 16, 13, 
+        1, -15, -13, 3, 4, 103, -18, 81, 30, 68, 54, -93, 44, -23, 93, 98, 5, 59};
+    String password = a(&quot;this_is_the_key.&quot;);
+    System.out.println(password);
+    try {  
+        SecretKeySpec secretKeySpec = new SecretKeySpec(password.getBytes(), &quot;AES&quot;);
+        Cipher cipher = Cipher.getInstance(&quot;AES/ECB/PKCS5Padding&quot;);
+        cipher.init(Cipher.DECRYPT_MODE, secretKeySpec);
+        byte[] result = cipher.doFinal(content);
+        System.out.println(new String(result));
+    } catch (Exception e) {  
+        e.printStackTrace();  
+    }  
+}    
+
+public static String a(String input) {
+    String result;
+    try {
+        input.getBytes(&quot;utf-8&quot;);
+        StringBuilder stringBuilder = new StringBuilder();
+        int i;
+        for(i = 0; i &lt; input.length(); i += 2) {
+            stringBuilder.append(input.charAt(i + 1));
+            stringBuilder.append(input.charAt(i));
+        }
+        result = stringBuilder.toString();
+    }
+    catch(Exception e) {
+        e.printStackTrace();
+        result = null;
+    }
+    return result;
+}
+</code></pre>
+
+<p><img src="./Image/2.png" /></p>
+
+</body>
+</html>
+<!-- This document was created with MarkdownPad, the Markdown editor for Windows (http://markdownpad.com) -->

@@ -1,0 +1,683 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>EasyCrack</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<style type="text/css">
+/* GitHub stylesheet for MarkdownPad (http://markdownpad.com) */
+/* Author: Nicolas Hery - http://nicolashery.com */
+/* Version: b13fe65ca28d2e568c6ed5d7f06581183df8f2ff */
+/* Source: https://github.com/nicolahery/markdownpad-github */
+
+/* RESET
+=============================================================================*/
+
+html, body, div, span, applet, object, iframe, h1, h2, h3, h4, h5, h6, p, blockquote, pre, a, abbr, acronym, address, big, cite, code, del, dfn, em, img, ins, kbd, q, s, samp, small, strike, strong, sub, sup, tt, var, b, u, i, center, dl, dt, dd, ol, ul, li, fieldset, form, label, legend, table, caption, tbody, tfoot, thead, tr, th, td, article, aside, canvas, details, embed, figure, figcaption, footer, header, hgroup, menu, nav, output, ruby, section, summary, time, mark, audio, video {
+  margin: 0;
+  padding: 0;
+  border: 0;
+}
+
+/* BODY
+=============================================================================*/
+
+body {
+  font-family: Helvetica, arial, freesans, clean, sans-serif;
+  font-size: 14px;
+  line-height: 1.6;
+  color: #333;
+  background-color: #fff;
+  padding: 20px;
+  max-width: 960px;
+  margin: 0 auto;
+}
+
+body>*:first-child {
+  margin-top: 0 !important;
+}
+
+body>*:last-child {
+  margin-bottom: 0 !important;
+}
+
+/* BLOCKS
+=============================================================================*/
+
+p, blockquote, ul, ol, dl, table, pre {
+  margin: 15px 0;
+}
+
+/* HEADERS
+=============================================================================*/
+
+h1, h2, h3, h4, h5, h6 {
+  margin: 20px 0 10px;
+  padding: 0;
+  font-weight: bold;
+  -webkit-font-smoothing: antialiased;
+}
+
+h1 tt, h1 code, h2 tt, h2 code, h3 tt, h3 code, h4 tt, h4 code, h5 tt, h5 code, h6 tt, h6 code {
+  font-size: inherit;
+}
+
+h1 {
+  font-size: 28px;
+  color: #000;
+}
+
+h2 {
+  font-size: 24px;
+  border-bottom: 1px solid #ccc;
+  color: #000;
+}
+
+h3 {
+  font-size: 18px;
+}
+
+h4 {
+  font-size: 16px;
+}
+
+h5 {
+  font-size: 14px;
+}
+
+h6 {
+  color: #777;
+  font-size: 14px;
+}
+
+body>h2:first-child, body>h1:first-child, body>h1:first-child+h2, body>h3:first-child, body>h4:first-child, body>h5:first-child, body>h6:first-child {
+  margin-top: 0;
+  padding-top: 0;
+}
+
+a:first-child h1, a:first-child h2, a:first-child h3, a:first-child h4, a:first-child h5, a:first-child h6 {
+  margin-top: 0;
+  padding-top: 0;
+}
+
+h1+p, h2+p, h3+p, h4+p, h5+p, h6+p {
+  margin-top: 10px;
+}
+
+/* LINKS
+=============================================================================*/
+
+a {
+  color: #4183C4;
+  text-decoration: none;
+}
+
+a:hover {
+  text-decoration: underline;
+}
+
+/* LISTS
+=============================================================================*/
+
+ul, ol {
+  padding-left: 30px;
+}
+
+ul li > :first-child, 
+ol li > :first-child, 
+ul li ul:first-of-type, 
+ol li ol:first-of-type, 
+ul li ol:first-of-type, 
+ol li ul:first-of-type {
+  margin-top: 0px;
+}
+
+ul ul, ul ol, ol ol, ol ul {
+  margin-bottom: 0;
+}
+
+dl {
+  padding: 0;
+}
+
+dl dt {
+  font-size: 14px;
+  font-weight: bold;
+  font-style: italic;
+  padding: 0;
+  margin: 15px 0 5px;
+}
+
+dl dt:first-child {
+  padding: 0;
+}
+
+dl dt>:first-child {
+  margin-top: 0px;
+}
+
+dl dt>:last-child {
+  margin-bottom: 0px;
+}
+
+dl dd {
+  margin: 0 0 15px;
+  padding: 0 15px;
+}
+
+dl dd>:first-child {
+  margin-top: 0px;
+}
+
+dl dd>:last-child {
+  margin-bottom: 0px;
+}
+
+/* CODE
+=============================================================================*/
+
+pre, code, tt {
+  font-size: 12px;
+  font-family: Consolas, "Liberation Mono", Courier, monospace;
+}
+
+code, tt {
+  margin: 0 0px;
+  padding: 0px 0px;
+  white-space: nowrap;
+  border: 1px solid #eaeaea;
+  background-color: #f8f8f8;
+  border-radius: 3px;
+}
+
+pre>code {
+  margin: 0;
+  padding: 0;
+  white-space: pre;
+  border: none;
+  background: transparent;
+}
+
+pre {
+  background-color: #f8f8f8;
+  border: 1px solid #ccc;
+  font-size: 13px;
+  line-height: 19px;
+  overflow: auto;
+  padding: 6px 10px;
+  border-radius: 3px;
+}
+
+pre code, pre tt {
+  background-color: transparent;
+  border: none;
+}
+
+kbd {
+    -moz-border-bottom-colors: none;
+    -moz-border-left-colors: none;
+    -moz-border-right-colors: none;
+    -moz-border-top-colors: none;
+    background-color: #DDDDDD;
+    background-image: linear-gradient(#F1F1F1, #DDDDDD);
+    background-repeat: repeat-x;
+    border-color: #DDDDDD #CCCCCC #CCCCCC #DDDDDD;
+    border-image: none;
+    border-radius: 2px 2px 2px 2px;
+    border-style: solid;
+    border-width: 1px;
+    font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;
+    line-height: 10px;
+    padding: 1px 4px;
+}
+
+/* QUOTES
+=============================================================================*/
+
+blockquote {
+  border-left: 4px solid #DDD;
+  padding: 0 15px;
+  color: #777;
+}
+
+blockquote>:first-child {
+  margin-top: 0px;
+}
+
+blockquote>:last-child {
+  margin-bottom: 0px;
+}
+
+/* HORIZONTAL RULES
+=============================================================================*/
+
+hr {
+  clear: both;
+  margin: 15px 0;
+  height: 0px;
+  overflow: hidden;
+  border: none;
+  background: transparent;
+  border-bottom: 4px solid #ddd;
+  padding: 0;
+}
+
+/* TABLES
+=============================================================================*/
+
+table th {
+  font-weight: bold;
+}
+
+table th, table td {
+  border: 1px solid #ccc;
+  padding: 6px 13px;
+}
+
+table tr {
+  border-top: 1px solid #ccc;
+  background-color: #fff;
+}
+
+table tr:nth-child(2n) {
+  background-color: #f8f8f8;
+}
+
+/* IMAGES
+=============================================================================*/
+
+img {
+  max-width: 100%
+}
+</style>
+</head>
+<body>
+<h2>EasyCrack</h2>
+<pre><code>package com.njctf.mobile.easycrack;
+
+import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
+import android.text.Editable;
+import android.text.TextWatcher;
+
+public class MainActivity extends AppCompatActivity {
+class CheckText implements TextWatcher {
+    CheckText(MainActivity arg1) {
+        MainActivity.this = arg1;
+        super();
+    }
+
+    public void afterTextChanged(Editable arg5) {
+        MainActivity.this.findViewById(2131427416).setText(&quot;Status: &quot; + MainActivity.this.parseText(arg5.toString()));
+    }
+
+    public void beforeTextChanged(CharSequence arg1, int arg2, int arg3, int arg4) {
+    }
+
+    public void onTextChanged(CharSequence arg1, int arg2, int arg3, int arg4) {
+    }
+}
+
+static {
+    System.loadLibrary(&quot;native-lib&quot;); //加载native-lib库文件
+}
+
+public MainActivity() {
+    super();
+}
+
+public String messageMe() {
+    String v3 = &quot;&quot;;
+    int v4 = 51;
+    String[] v1 = this.getApplicationContext().getPackageName().split(&quot;\\.&quot;);将包名按.分割
+    char[] v6 = v1[v1.length - 1].toCharArray();
+    int v7 = v6.length;
+    int v5;
+    for(v5 = 0; v5 &lt; v7; ++v5) {
+        v4 ^= v6[v5];
+        v3 = v3 + (((char)v4));
+    }
+
+    return v3;
+}
+
+protected void onCreate(Bundle arg4) {
+    super.onCreate(arg4);
+    this.setContentView(2130968603);
+    this.findViewById(2131427416).setText(this.stringFromJNI());
+    this.findViewById(2131427415).addTextChangedListener(new CheckText(this)); 
+}
+
+public native String parseText(String arg1) { //声明native方法paresText
+}
+
+public native String stringFromJNI() {  //声明native方法stringFromJNI
+}
+}
+</code></pre>
+
+<p>用IDA打开so文件</p>
+<p><img src="./Image/1.png" /></p>
+<p>这里stringFromJNI()并没有被识别，摁下快捷键p,再看就好了</p>
+<p><img src="./Image/2.png" /></p>
+<p>F5大法好，毕竟汇编学得不咋地，</p>
+<p><img src="./Image/3.png" />
+右键修复一下参数类型</p>
+<p><img src="./Image/4.png" />
+根据NDK的知识可以知道，这个参数类型是JNIEnv*类型，是一个指向一个结构体的指针</p>
+<p>然后再来修复一下函数的调用,在函数名那右键force call type：</p>
+<p><img src="./Image/5.png" /></p>
+<p>然后再来看看第二个函数，同样需要修复，修复后如下：</p>
+<pre><code>int __fastcall Java_com_njctf_mobile_easycrack_MainActivity_parseText(JNIEnv *a1, jobject a2, char *a3)
+{
+  char *v3; // ST10_4@1 //传入的字符串，在C中表示字符串类型使用的是char数组
+  jobject v4; // r4@1
+  JNIEnv *v5; // r6@1
+  jclass v6; // r0@1
+  jmethodID v7; // r0@1
+  void *v8; // r0@1
+  size_t v9; // r4@1
+  size_t v10; // r6@1
+  size_t v11; // r2@3
+  unsigned int v12; // r3@4
+  unsigned __int32 v13; // r6@7
+  unsigned __int32 v14; // r0@7
+  unsigned __int8 *v15; // r4@7
+  char *v16; // r5@8
+  size_t v17; // r2@10
+  int (*v18)(void); // r2@12
+  const char *v19; // r4@13
+  size_t v20; // r0@13
+  int result; // r0@14
+  JNIEnv *v22; // [sp+8h] [bp-134h]@1
+  const char *v23; // [sp+Ch] [bp-130h]@1
+  unsigned __int8 *v24; // [sp+10h] [bp-12Ch]@1
+  char *s; // [sp+14h] [bp-128h]@1
+  int v26; // [sp+18h] [bp-124h]@1
+  const char *v27; // [sp+18h] [bp-124h]@7
+  int v28; // [sp+1Ch] [bp-120h]@7
+  signed int v29; // [sp+20h] [bp-11Ch]@7
+  signed int v30; // [sp+24h] [bp-118h]@7
+  int v31; // [sp+28h] [bp-114h]@7
+  char v32; // [sp+2Ch] [bp-110h]@7
+  int v33; // [sp+12Ch] [bp-10h]@1
+
+  v3 = a3;
+  v4 = a2;
+  v5 = a1;
+  v22 = a1;
+  v33 = _stack_chk_guard;
+  v6 = (*a1)-&gt;FindClass(a1, &quot;com/njctf/mobile/easycrack/MainActivity&quot;); //寻找MainActivity类
+  v7 = (*v5)-&gt;GetMethodID(v5, v6, &quot;messageMe&quot;, &quot;()Ljava/lang/String;&quot;);//寻找MainActivity类中的messageMe()方法，得到他的MethodId，调用这个方法是需要传入这个ID
+  v8 = (void *)j_j_j__ZN7_JNIEnv16CallObjectMethodEP8_jobjectP10_jmethodIDz(v5, v4, v7);//调用messageMe方法
+  v26 = 0;
+  s = (char *)(*v5)-&gt;GetStringUTFChars(v5, v8, 0); //一种类型转换，调用JNI结构体中的方法，s即为messageMe()方法的返回值
+  v23 = (*v5)-&gt;GetStringUTFChars(v5, v3, 0);//同上
+  v9 = j_j_strlen(v23); //获取输入字符串的长度
+  v10 = j_j_strlen(s); //同上，获取s的长度
+  v24 = (unsigned __int8 *)j_j_malloc(v9); //开辟一段空间，空间的长度为v9。即为输入字符串的长度，用来保存异或操作后的结果
+  if ( v9 )
+  {
+        do
+        {
+        if ( v10 )
+        {
+                v11 = 0;
+            do
+                {
+                    *(&amp;v24[v26] + v11) = s[v11] ^ *(&amp;v23[v26] + v11); 使用s对输入的字符串进行异或处理
+                    v12 = v26 + v11++ + 1;
+                }
+                while ( v11 &lt; v10 &amp;&amp; v12 &lt; v9 );
+        }
+        v26 += v10;
+        }
+        while ( v26 &lt; v9 );
+  }
+  j_j___aeabi_memclr4(&amp;v32);
+  v28 = 1835097929;
+  v29 = 1701344351;
+  v30 = 2036689759;
+  v31 = 0;
+  v13 = v9;
+  v14 = j_j_strlen((const char *)&amp;v28);
+  j_j_j__Z4initPhS_m((unsigned __int8 *)&amp;v32, (unsigned __int8 *)&amp;v28, v14);
+  v15 = v24;
+  j_j_j__Z5cryptPhS_m((unsigned __int8 *)&amp;v32, v24, v13);
+  v27 = (const char *)j_j_malloc(2 * v13 | 1);
+  if ( v13 )
+  {
+v16 = (char *)v27;
+do
+{
+  j_j_snprintf(v16, 3u, &quot;%02X&quot;, *v15);
+  v16 += 2;
+  --v13;
+  ++v15;
+}
+while ( v13 );
+  }
+  v17 = j_j_strlen(v27);
+  if ( v17 &amp;&amp; !j_j_strncmp(v27, compare, v17) )
+  {
+j_j___android_log_print(2, &quot;NJCTF-easycrack&quot;, &quot;success: %s&quot;, v27);
+v19 = compare;
+v20 = j_j_strlen(compare);
+j_j_strncmp(v27, v19, v20);
+v18 = (int (*)(void))(*v22)-&gt;NewStringUTF;
+  }
+  else
+  {
+j_j___android_log_print(6, &quot;NJCTF-easycrack&quot;, &quot;failed : %s&quot;, v27);
+v18 = (int (*)(void))(*v22)-&gt;NewStringUTF;
+  }
+  result = v18();
+  if ( _stack_chk_guard != v33 )
+j_j___stack_chk_fail(result);
+  return result;
+}
+</code></pre>
+
+<p>那么这个messageMe函数会返回什么呐，运行下试试：</p>
+<pre><code>/**
+ * Created by mask on 2017/4/3.
+ */
+public class test {
+public static void main(String[] args) {
+    String result = &quot;&quot;;
+    String packagename = &quot;com.njctf.mobile.easycrack&quot;;
+    int t = 51;
+    String[] paname = packagename.split(&quot;\\.&quot;);
+    for (char ch : paname[paname.length - 1].toCharArray()) {
+        t ^= ch;
+        result = result + ((char) t);
+    }
+    System.out.println(result);
+
+}
+}
+</code></pre>
+
+<p>运行结果为：</p>
+<pre><code>&quot;C:\Program Files\Java\jdk1.8.0_102\bin\java&quot; -Didea.launcher.port=7532 &quot;-Didea.launcher.bin.path=I:\IntelliJ IDEA Community Edition 2016.3\bin&quot; -Dfile.encoding=UTF-8 -classpath &quot;C:\Program Files\Java\jdk1.8.0_102\jre\lib\charsets.jar;C:\Program Files\Java\jdk1.8.0_102\jre\lib\deploy.jar;C:\Program Files\Java\jdk1.8.0_102\jre\lib\ext\access-bridge-64.jar;C:\Program Files\Java\jdk1.8.0_102\jre\lib\ext\cldrdata.jar;C:\Program Files\Java\jdk1.8.0_102\jre\lib\ext\dnsns.jar;C:\Program Files\Java\jdk1.8.0_102\jre\lib\ext\jaccess.jar;C:\Program Files\Java\jdk1.8.0_102\jre\lib\ext\jfxrt.jar;C:\Program Files\Java\jdk1.8.0_102\jre\lib\ext\localedata.jar;C:\Program Files\Java\jdk1.8.0_102\jre\lib\ext\nashorn.jar;C:\Program Files\Java\jdk1.8.0_102\jre\lib\ext\sunec.jar;C:\Program Files\Java\jdk1.8.0_102\jre\lib\ext\sunjce_provider.jar;C:\Program Files\Java\jdk1.8.0_102\jre\lib\ext\sunmscapi.jar;C:\Program Files\Java\jdk1.8.0_102\jre\lib\ext\sunpkcs11.jar;C:\Program Files\Java\jdk1.8.0_102\jre\lib\ext\zipfs.jar;C:\Program Files\Java\jdk1.8.0_102\jre\lib\javaws.jar;C:\Program Files\Java\jdk1.8.0_102\jre\lib\jce.jar;C:\Program Files\Java\jdk1.8.0_102\jre\lib\jfr.jar;C:\Program Files\Java\jdk1.8.0_102\jre\lib\jfxswt.jar;C:\Program Files\Java\jdk1.8.0_102\jre\lib\jsse.jar;C:\Program Files\Java\jdk1.8.0_102\jre\lib\management-agent.jar;C:\Program Files\Java\jdk1.8.0_102\jre\lib\plugin.jar;C:\Program Files\Java\jdk1.8.0_102\jre\lib\resources.jar;C:\Program Files\Java\jdk1.8.0_102\jre\lib\rt.jar;C:\Users\mask\Desktop\Algorithms(Fourth)\1.1.6.1\out\production\1.1.6.1;I:\IntelliJ IDEA Community Edition 2016.3\lib\idea_rt.jar&quot; com.intellij.rt.execution.application.AppMain test
+V7D=^,M.E
+</code></pre>
+
+<p>再往下分析，会发现这里有两个函数，第二个看函数名应该是个加密函数，跟进查看：</p>
+<p><img src="./Image/6.png" /></p>
+<pre><code>int __fastcall crypt(int result, unsigned __int8 *a2, unsigned __int32 a3)
+{
+  int v3; // r3@1
+  int v4; // r4@2
+  int v5; // r6@3
+
+  v3 = 0;
+  if ( a3 )
+  {
+v4 = 0;
+do
+{
+  v3 = (v3 + 1) % 256;
+  v5 = *(_BYTE *)(result + v3);
+  v4 = (v5 + v4) % 256;
+  *(_BYTE *)(result + v3) = *(_BYTE *)(result + v4);
+  *(_BYTE *)(result + v4) = v5;
+  *a2 ^= *(_BYTE *)(result + ((*(_BYTE *)(result + v3) + v5) &amp; 0xFF));
+  --a3;
+  ++a2;
+}
+while ( a3 );
+</code></pre>
+
+<p>大佬说一眼看出RC4加密，可能我太菜，没有看出来23333
+，那么第一个功能大致可以知道是用来初始化密钥的，跟进去看看：</p>
+<pre><code>int __fastcall init(unsigned __int8 *a1, unsigned __int8 *a2, unsigned __int32 a3)
+{
+  signed int v3; // r5@1
+  int v4; // r4@1
+  int v5; // r6@1
+  int v6; // r1@2
+  char *v7; // r0@2
+  unsigned __int8 *v8; // r1@3
+  int v9; // r2@4
+  int result; // r0@5
+  unsigned __int8 *v11; // [sp+4h] [bp-11Ch]@1
+  unsigned __int32 v12; // [sp+8h] [bp-118h]@1
+  unsigned __int8 *v13; // [sp+Ch] [bp-114h]@1
+  char v14[256]; // [sp+10h] [bp-110h]@1
+  int v15; // [sp+110h] [bp-10h]@1
+
+  v12 = a3;
+  v11 = a2;
+  v13 = a1;
+  v15 = _stack_chk_guard;
+  v3 = 256;
+  j_j___aeabi_memclr4(v14);
+  v4 = 0;
+  v5 = 0;
+  do
+  {
+v13[v5] = v5;
+j_j_j___aeabi_uidivmod(v5, v12);
+v7 = v14;
+v14[v5++] = v11[v6];
+  }
+  while ( v5 != 256 );
+  v8 = v13;
+  do
+  {
+v9 = *v8;
+v4 = (v9 + v4 + (unsigned __int8)*v7) % 256;
+`*v8 = v13[v4];`
+v13[v4] = v9;
+    --v3;
+    ++v7;
+    ++v8;
+  }
+  while ( v3 );
+  result = _stack_chk_guard - v15;
+  if ( _stack_chk_guard != v15 )
+j_j___stack_chk_fail(result);
+  return result;
+}
+</code></pre>
+
+<p>那么这个init函数传入的参数是啥，来看看先：</p>
+<p><img src="./Image/7.png" /></p>
+<p>第二个参数是一个字符串，这里用char*表示，v28是首地址，呢么来看看这个字符串到底是什么。嘿嘿~
+<img src="./Image/8.png" />
+全都这样操作一下，然后</p>
+<p><img src="./Image/9.png" /></p>
+<p>剩下两个参数分别是一个数组和一个字符串长度</p>
+<p>那么接着刚刚的再往下分析：</p>
+<pre><code>v27 = (const char *)j_j_malloc(2 * v13 | 1); //这个就是2*v13+1
+  if ( v13 )
+  {
+v16 = (char *)v27;
+do
+{
+  j_j_snprintf(v16, 3u, &quot;%02X&quot;, *v15);
+  v16 += 2;
+  --v13;
+  ++v15;
+}
+while ( v13 );
+  }
+  v17 = j_j_strlen(v27);
+  if ( v17 &amp;&amp; !j_j_strncmp(v27, compare, v17) ) 
+  {
+        j_j___android_log_print(2, &quot;NJCTF-easycrack&quot;, &quot;success: %s&quot;, v27); //正确分支
+        v19 = compare;
+        v20 = j_j_strlen(compare);
+        j_j_strncmp(v27, v19, v20);
+        v18 = (int (*)(void))(*v22)-&gt;NewStringUTF;
+  }
+  else
+  {
+        j_j___android_log_print(6, &quot;NJCTF-easycrack&quot;, &quot;failed : %s&quot;, v27);
+        v18 = (int (*)(void))(*v22)-&gt;NewStringUTF;
+  }
+  result = v18();
+  if ( _stack_chk_guard != v33 )
+        j_j___stack_chk_fail(result);
+  return result;
+}
+</code></pre>
+
+<p>这里compare是啥呢？点进去看看</p>
+<p><img src="./Image/10.png" /></p>
+<p>是这样一串东西</p>
+<p>C8E4EF0E4DCCA683088134F8635E970EEAD9E277F314869F7EF5198A2AA4</p>
+<p>那么函数的作用大致都了解了，思路就是：</p>
+<p>执行messageMe()函数得到一个字符串-&gt;
+循环使用异或后的字符串跟输入的字符串进行异或-&gt;
+将异或后的数据进行RC4加密，然后跟compare字符串对比，一样则校验通过</p>
+<p>最后的脚本我是直接拿大佬的过来用的23333，懒得写了：</p>
+<pre><code># coding = utf-8
+
+import binascii
+
+def main():
+key_rc4 = &quot;I_am_the_key&quot;
+rc4_encrypted = binascii.a2b_hex(&quot;C8E4EF0E4DCCA683088134F8635E970EEAD9E277F314869F7EF5198A2AA4&quot;)
+
+# Init rc4_key
+j = 0;
+s = range(256)
+for i in range(256):
+    j = (j + s[i] + ord(key_rc4[i % len(key_rc4)])) % 256
+    s[i], s[j] = s[j], s[i]
+i = 0
+j = 0
+
+# Rc4 decryption
+rc4_decrypted = []
+for data in rc4_encrypted:
+    i = (i + 1) % 256
+    j = (j + s[i]) % 256
+    s[i], s[j] = s[j], s[i]
+    rc4_decrypted.append(chr(ord(data) ^ s[(s[i] + s[j]) % 256]))
+rc4_decrypted =  &quot;&quot;.join(rc4_decrypted)
+#print rc4_decrypted
+
+key_xor = &quot;V7D=^,M.E&quot;
+key_xor_len = len(key_xor)
+Flag = []
+for i in range(len(rc4_decrypted)):
+     Flag.append(chr(ord(rc4_decrypted[i]) ^ ord(key_xor[i % key_xor_len])))
+print &quot;&quot;.join(Flag)
+
+
+if __name__ == '__main__':
+main()
+</code></pre>
+
+<p>flag为：</p>
+<pre><code>It_s_a_easyCrack_for_beginners
+</code></pre>
+
+<p>大佬以及解释的很全了，我这多了一点新手的解释而已23333：</p>
+<p><a href="http://www.wangzhixian.org/AndroidCrackMe/2017XCTF&amp;NJCTF-easycrack-100/article.html">http://www.wangzhixian.org/AndroidCrackMe/2017XCTF&amp;NJCTF-easycrack-100/article.html</a></p>
+
+</body>
+</html>
+<!-- This document was created with MarkdownPad, the Markdown editor for Windows (http://markdownpad.com) -->

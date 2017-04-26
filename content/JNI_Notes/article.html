@@ -1,0 +1,807 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>article</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<style type="text/css">
+/* GitHub stylesheet for MarkdownPad (http://markdownpad.com) */
+/* Author: Nicolas Hery - http://nicolashery.com */
+/* Version: b13fe65ca28d2e568c6ed5d7f06581183df8f2ff */
+/* Source: https://github.com/nicolahery/markdownpad-github */
+
+/* RESET
+=============================================================================*/
+
+html, body, div, span, applet, object, iframe, h1, h2, h3, h4, h5, h6, p, blockquote, pre, a, abbr, acronym, address, big, cite, code, del, dfn, em, img, ins, kbd, q, s, samp, small, strike, strong, sub, sup, tt, var, b, u, i, center, dl, dt, dd, ol, ul, li, fieldset, form, label, legend, table, caption, tbody, tfoot, thead, tr, th, td, article, aside, canvas, details, embed, figure, figcaption, footer, header, hgroup, menu, nav, output, ruby, section, summary, time, mark, audio, video {
+  margin: 0;
+  padding: 0;
+  border: 0;
+}
+
+/* BODY
+=============================================================================*/
+
+body {
+  font-family: Helvetica, arial, freesans, clean, sans-serif;
+  font-size: 14px;
+  line-height: 1.6;
+  color: #333;
+  background-color: #fff;
+  padding: 20px;
+  max-width: 960px;
+  margin: 0 auto;
+}
+
+body>*:first-child {
+  margin-top: 0 !important;
+}
+
+body>*:last-child {
+  margin-bottom: 0 !important;
+}
+
+/* BLOCKS
+=============================================================================*/
+
+p, blockquote, ul, ol, dl, table, pre {
+  margin: 15px 0;
+}
+
+/* HEADERS
+=============================================================================*/
+
+h1, h2, h3, h4, h5, h6 {
+  margin: 20px 0 10px;
+  padding: 0;
+  font-weight: bold;
+  -webkit-font-smoothing: antialiased;
+}
+
+h1 tt, h1 code, h2 tt, h2 code, h3 tt, h3 code, h4 tt, h4 code, h5 tt, h5 code, h6 tt, h6 code {
+  font-size: inherit;
+}
+
+h1 {
+  font-size: 28px;
+  color: #000;
+}
+
+h2 {
+  font-size: 24px;
+  border-bottom: 1px solid #ccc;
+  color: #000;
+}
+
+h3 {
+  font-size: 18px;
+}
+
+h4 {
+  font-size: 16px;
+}
+
+h5 {
+  font-size: 14px;
+}
+
+h6 {
+  color: #777;
+  font-size: 14px;
+}
+
+body>h2:first-child, body>h1:first-child, body>h1:first-child+h2, body>h3:first-child, body>h4:first-child, body>h5:first-child, body>h6:first-child {
+  margin-top: 0;
+  padding-top: 0;
+}
+
+a:first-child h1, a:first-child h2, a:first-child h3, a:first-child h4, a:first-child h5, a:first-child h6 {
+  margin-top: 0;
+  padding-top: 0;
+}
+
+h1+p, h2+p, h3+p, h4+p, h5+p, h6+p {
+  margin-top: 10px;
+}
+
+/* LINKS
+=============================================================================*/
+
+a {
+  color: #4183C4;
+  text-decoration: none;
+}
+
+a:hover {
+  text-decoration: underline;
+}
+
+/* LISTS
+=============================================================================*/
+
+ul, ol {
+  padding-left: 30px;
+}
+
+ul li > :first-child, 
+ol li > :first-child, 
+ul li ul:first-of-type, 
+ol li ol:first-of-type, 
+ul li ol:first-of-type, 
+ol li ul:first-of-type {
+  margin-top: 0px;
+}
+
+ul ul, ul ol, ol ol, ol ul {
+  margin-bottom: 0;
+}
+
+dl {
+  padding: 0;
+}
+
+dl dt {
+  font-size: 14px;
+  font-weight: bold;
+  font-style: italic;
+  padding: 0;
+  margin: 15px 0 5px;
+}
+
+dl dt:first-child {
+  padding: 0;
+}
+
+dl dt>:first-child {
+  margin-top: 0px;
+}
+
+dl dt>:last-child {
+  margin-bottom: 0px;
+}
+
+dl dd {
+  margin: 0 0 15px;
+  padding: 0 15px;
+}
+
+dl dd>:first-child {
+  margin-top: 0px;
+}
+
+dl dd>:last-child {
+  margin-bottom: 0px;
+}
+
+/* CODE
+=============================================================================*/
+
+pre, code, tt {
+  font-size: 12px;
+  font-family: Consolas, "Liberation Mono", Courier, monospace;
+}
+
+code, tt {
+  margin: 0 0px;
+  padding: 0px 0px;
+  white-space: nowrap;
+  border: 1px solid #eaeaea;
+  background-color: #f8f8f8;
+  border-radius: 3px;
+}
+
+pre>code {
+  margin: 0;
+  padding: 0;
+  white-space: pre;
+  border: none;
+  background: transparent;
+}
+
+pre {
+  background-color: #f8f8f8;
+  border: 1px solid #ccc;
+  font-size: 13px;
+  line-height: 19px;
+  overflow: auto;
+  padding: 6px 10px;
+  border-radius: 3px;
+}
+
+pre code, pre tt {
+  background-color: transparent;
+  border: none;
+}
+
+kbd {
+    -moz-border-bottom-colors: none;
+    -moz-border-left-colors: none;
+    -moz-border-right-colors: none;
+    -moz-border-top-colors: none;
+    background-color: #DDDDDD;
+    background-image: linear-gradient(#F1F1F1, #DDDDDD);
+    background-repeat: repeat-x;
+    border-color: #DDDDDD #CCCCCC #CCCCCC #DDDDDD;
+    border-image: none;
+    border-radius: 2px 2px 2px 2px;
+    border-style: solid;
+    border-width: 1px;
+    font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;
+    line-height: 10px;
+    padding: 1px 4px;
+}
+
+/* QUOTES
+=============================================================================*/
+
+blockquote {
+  border-left: 4px solid #DDD;
+  padding: 0 15px;
+  color: #777;
+}
+
+blockquote>:first-child {
+  margin-top: 0px;
+}
+
+blockquote>:last-child {
+  margin-bottom: 0px;
+}
+
+/* HORIZONTAL RULES
+=============================================================================*/
+
+hr {
+  clear: both;
+  margin: 15px 0;
+  height: 0px;
+  overflow: hidden;
+  border: none;
+  background: transparent;
+  border-bottom: 4px solid #ddd;
+  padding: 0;
+}
+
+/* TABLES
+=============================================================================*/
+
+table th {
+  font-weight: bold;
+}
+
+table th, table td {
+  border: 1px solid #ccc;
+  padding: 6px 13px;
+}
+
+table tr {
+  border-top: 1px solid #ccc;
+  background-color: #fff;
+}
+
+table tr:nth-child(2n) {
+  background-color: #f8f8f8;
+}
+
+/* IMAGES
+=============================================================================*/
+
+img {
+  max-width: 100%
+}
+</style>
+</head>
+<body>
+<h2>0x00 闲言碎语</h2>
+<p>最近状态很糟，写点东西静下心，捋捋思绪，就总结下之前学得JNI的一些知识点好了 </p>
+<h2>0x01 一个NDK demo</h2>
+<p>新建项目工程</p>
+<pre><code>package myapplication.mask.com.myapplication;
+
+import android.support.v7.app.AppCompatActivity;
+import android.os.Bundle;
+import android.widget.Toast;
+
+
+
+public class MainActivity extends AppCompatActivity {
+
+static{
+    System.loadLibrary(&quot;demo&quot;);//载入类库
+}
+
+public native static String FromNative();//声明Native方法
+
+
+
+
+@Override
+protected void onCreate(Bundle savedInstanceState) {
+    super.onCreate(savedInstanceState);
+    setContentView(R.layout.activity_main);
+
+    Toast.makeText(this,FromNative(),Toast.LENGTH_SHORT).show();
+}
+}
+</code></pre>
+
+<p>然后Make Project</p>
+<p>下面切换到<code>app/src/main/java</code>目录下，执行下面的命令生成一个JNI头文件</p>
+<pre><code>javah myapplication.mask.com.myapplication.MainActivity
+</code></pre>
+
+<p><img src="./Image/1.png" /></p>
+<p>我们来看看这个头文件都有些啥</p>
+<pre><code>/* DO NOT EDIT THIS FILE - it is machine generated */
+#include &lt;jni.h&gt; //需要导入jni.h头文件
+/* Header for class myapplication_mask_com_myapplication_MainActivity */
+
+#ifndef _Included_myapplication_mask_com_myapplication_MainActivity
+#define _Included_myapplication_mask_com_myapplication_MainActivity
+#ifdef __cplusplus
+extern &quot;C&quot; {
+#endif
+/*
+ * Class: myapplication_mask_com_myapplication_MainActivity /*类名*/
+ * Method:FromNative   /*方法名*/
+ * Signature: ()Ljava/lang/String; /*签名信息（是不是很像smali代码？！！反正我第一反应是这个*/
+ */
+JNIEXPORT jstring JNICALL Java_myapplication_mask_com_myapplication_MainActivity_FromNative
+  (JNIEnv *, jclass);//这个Native方法的声明
+
+#ifdef __cplusplus
+}
+#endif
+#endif
+</code></pre>
+
+<p>这里有个概念那就是我怎么知道这个声明的方法就是我要调用的呢？</p>
+<p>这个是JNI规定的写法，为了方便，编译时会自动在头文件生成，包含的内容一看便知，将包名中的&quot;
+.&quot;换成了&quot;<em>&quot;然后+“</em>”+类名</p>
+<pre><code>myapplication_mask_com_myapplication_MainActivity
+</code></pre>
+
+<p>为了方便，我把这个头文件重命名为demo.h，然后新建一个JNI目录，将demo.h移动到JNI下</p>
+<p><img src="./Image/3.png" /></p>
+<p>然后开始编译，
+将项目的build.gradle改成如下：</p>
+<pre><code>apply plugin: 'com.android.model.application' //此处加了model
+model {  //对应加上model
+android {
+    compileSdkVersion 25
+    buildToolsVersion &quot;24.0.1&quot;
+    defaultConfig {
+        applicationId &quot;myapplication.mask.com.myapplication&quot;
+        minSdkVersion.apiLevel 19 //此处修改了
+        targetSdkVersion.apiLevel 25//此处修改了
+        versionCode 1
+        versionName &quot;1.0&quot;
+        testInstrumentationRunner &quot;android.support.test.runner.AndroidJUnitRunner&quot;
+    }
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles.add(file(&quot;proguard-rules.pro&quot;))//此处修改了
+        }
+    }
+    ndk {
+        moduleName &quot;demo&quot; //库名
+        stl &quot;stlport_static&quot;//以静态链接方式使用的stlport版本的STL
+        ldLibs.addAll([&quot;log&quot;,&quot;z&quot;,&quot;android&quot;]) 
+        abiFilters.addAll(['armeabi','armeabi-v7a']) //abi平台
+    }
+    //sourceSets { main { jni.srcDirs = ['src/main/jni', 'src/main/jni/'] } }
+}
+}
+
+dependencies {
+compile fileTree(dir: 'libs', include: ['*.jar'])
+androidTestCompile('com.android.support.test.espresso:espresso-core:2.2.2', {
+    exclude group: 'com.android.support', module: 'support-annotations'
+})
+compile 'com.android.support:appcompat-v7:25.1.0'
+testCompile 'junit:junit:4.12'
+}
+</code></pre>
+
+<p>再来修改工程下的build.gradle:</p>
+<pre><code>// Top-level build file where you can add configuration options common to all sub-projects/modules.
+
+buildscript {
+repositories {
+    jcenter()
+}
+dependencies {
+    classpath 'com.android.tools.build:gradle-experimental:0.8.3' //此处需要修改gradle的版本号
+
+    // NOTE: Do not place your application dependencies here; they belong
+    // in the individual module build.gradle files
+}
+}
+
+allprojects {
+repositories {
+    jcenter()
+}
+}
+
+task clean(type: Delete) {
+delete rootProject.buildDir
+}
+</code></pre>
+
+<p>其他编译方式：</p>
+<p><a href="http://www.tuicool.com/articles/3mu22ie">http://www.tuicool.com/articles/3mu22ie</a></p>
+<p><a href="http://www.jianshu.com/p/9d001d966053?utm_source=tuicool&amp;utm_medium=referral">http://www.jianshu.com/p/9d001d966053?utm_source=tuicool&amp;utm_medium=referral</a></p>
+<hr />
+<p>然后新建一个demo.cpp文件</p>
+<pre><code>//
+// Created by mask on 2017/4/25.
+//
+#include &lt;iostream&gt;
+#include &quot;demo.h&quot;
+#include &lt;jni.h&gt;
+
+using namespace std;
+
+/*头文件中的信息，可以直接复制过来
+ * Class: myapplication_mask_com_myapplication_MainActivity
+ * Method:FromNative
+ * Signature: ()Ljava/lang/String;
+ */
+JNIEXPORT jstring JNICALL Java_myapplication_mask_com_myapplication_MainActivity_FromNative
+  (JNIEnv *env, jclass clazz)
+  {
+return env-&gt;NewStringUTF(&quot;Hello from JNI!&quot;);
+  }
+</code></pre>
+
+<p>然后运行：</p>
+<p><img src="./Image/2.png" /></p>
+<hr />
+<p>如果用c写的话，demo.c</p>
+<pre><code>//
+// Created by mask on 2017/4/25.
+//
+
+#include &quot;demo.h&quot;
+#include &lt;jni.h&gt;
+
+
+
+/*
+ * Class: myapplication_mask_com_myapplication_MainActivity
+ * Method:FromNative
+ * Signature: ()Ljava/lang/String;
+ */
+JNIEXPORT jstring JNICALL Java_myapplication_mask_com_myapplication_MainActivity_FromNative
+  (JNIEnv *env, jclass clazz)
+  {
+return (*env)-&gt;NewStringUTF(env,&quot;Hello from JNI!&quot;);
+  }
+</code></pre>
+
+<p>可以发现这(*env)其实是个二级指针，而c++则是使用了一级指针，至于分别指向了哪，不急，下面开始切入正题</p>
+<hr />
+<h2>0x02 反汇编</h2>
+<p>那么可以把AS关了，把刚刚那么应用解压一下，你会发现有一个lib目录，这就是一般情况下库文件存放的地方</p>
+<p><img src="./Image/4.png" /></p>
+<p>用IDA打开那个so文件(我一般喜欢打开armeabi下的)</p>
+<p>这个就是我们编写的Native函数,跟进去</p>
+<p><img src="./Image/5.png" /></p>
+<pre><code>; =============== S U B R O U T I N E =======================================
+.text:00000D78
+.text:00000D78 ; Attributes: bp-based frame fpd=8
+.text:00000D78
+.text:00000D78 ; _DWORD __fastcall _JNIEnv::NewStringUTF(_JNIEnv *__hidden this, const char *)
+.text:00000D78 WEAK _ZN7_JNIEnv12NewStringUTFEPKc
+.text:00000D78 _ZN7_JNIEnv12NewStringUTFEPKc   ; CODE XREF: Java_myapplication_mask_com_myapplication_MainActivity_FromNative+14p
+.text:00000D78
+.text:00000D78 var_8   = -8
+.text:00000D78 var_4   = -4
+.text:00000D78
+.text:00000D78 PUSH{R7,LR}
+.text:00000D7A SUB SP, SP, #8
+.text:00000D7C ADD R7, SP, #0
+.text:00000D7E STR R0, [R7,#8+var_4]
+.text:00000D80 STR R1, [R7,#8+var_8]
+.text:00000D82 LDR R3, [R7,#8+var_4]
+.text:00000D84 LDR R2, [R3]
+.text:00000D86 MOVSR3, #0x29C
+.text:00000D8A LDR R3, [R2,R3]
+.text:00000D8C LDR R1, [R7,#8+var_4]
+.text:00000D8E LDR R2, [R7,#8+var_8]
+.text:00000D90 MOVSR0, R1
+.text:00000D92 MOVSR1, R2
+.text:00000D94 BLX R3
+.text:00000D96 MOVSR3, R0
+.text:00000D98 NOP
+.text:00000D9A MOVSR0, R3
+.text:00000D9C MOV SP, R7
+.text:00000D9E ADD SP, SP, #8
+.text:00000DA0 POP {R7,PC}
+.text:00000DA0 ; End of function _JNIEnv::NewStringUTF(char const*)
+</code></pre>
+
+<p>一句一句分析：</p>
+<p>导入函数</p>
+<pre><code> EXPORT Java_myapplication_mask_com_myapplication_MainActivity_FromNative
+.text:00000DA4 Java_myapplication_mask_com_myapplication_MainActivity_FromNative
+</code></pre>
+
+<p>将R7和LR寄存器的值压入栈（什么？啥是寄存器？啥是内存栈？呐，这个都不知道的话，下面你忽略吧0.0），LR寄存器是用来保存下一条指令的</p>
+<pre><code>PUSH{R7,LR}
+</code></pre>
+
+<p>SP = SP -8 </p>
+<p>SP寄存器是用来保存栈顶元素的，而内存栈是自下到上，降序的，此处SP减去8，就是为了开辟出一段栈空间</p>
+<pre><code>SUB SP, SP, #8
+</code></pre>
+
+<p>R7 = SP + 0 </p>
+<p>此处相当于R7 = SP，将SP的值传给R7，为什么这样做呢？这其实是一种保护机制，因为SP是时刻指向栈顶的，可以看到，下面的一些操作都是以SP为基地址进行的，那么我们这里用R7来替代SP，，将SP的值保存在R7中，我们后边调用函数出栈时，在将R7的值还给SP，这样可以保证栈平衡</p>
+<pre><code>ADD R7, SP, #0
+</code></pre>
+
+<p>将R0寄存器的值赋给(R7+8-4)地址处，这是一个写操作</p>
+<pre><code> STR R0, [R7,#8+var_4]
+</code></pre>
+
+<p>将R1寄存器的值赋给(R7+8-8)地址处，这是一个写操作</p>
+<pre><code>STR R1, [R7,#8+var_8]
+</code></pre>
+
+<p>那么RO,R1寄存器的值是什么呢？在ARM中，前4个参数是用R0-R3来保存的（如果多余4个参数，剩下的则是用栈来操作）</p>
+<p>那么JNI函数的第一个参数是一个JNIEnv 类型的指针<code>*env</code>，第二个参数是一个jclass类型的参数clazz或者是一个jobject类型的object，呐，这个函数其实只有一个参数，那就是JNIEnv类型的指针<code>*env</code>,为啥没有第二个，因为压根就啥也没操作，这里就只是return了一个字符串而已。。。</p>
+<p>将第一个参数保存到R3寄存器</p>
+<pre><code>LDR R3, [R7,#8+var_4]
+</code></pre>
+
+<p>将<code>aHelloFromJni - 0xDB6</code>的值赋给R2，这里有个小tip，你可以鼠标右键点击那个“=”,他会自动帮你转会为最终地址</p>
+<pre><code>LDR R2, =(aHelloFromJni - 0xDB6)
+</code></pre>
+
+<p><img src="./Image/6.png" /></p>
+<p>R2 = R2 + PC</p>
+<p>PC寄存器为当前指令，但是这里需要注意，之前我也搞错过，ARM在执行命令时，其实是分三步走的</p>
+<p>1.取址</p>
+<p>2.编译</p>
+<p>3.执行</p>
+<p>那么当我执行第一条命令时，第二条指令在编译，第三条指令在取址，过程大概如下：</p>
+<pre><code> 取址------------------编译-----------------------执行
+                       取址-----------------------编译-----------------执行
+                                                 取址-----------------编译-----------------执行
+</code></pre>
+
+<p>那么就好理解了，此时PC的值0x00000DB6</p>
+<p>那么R2此时的值为(aHelloFromJni - 0xDB6+0xDB6)处的值,那么就是<code>Hello from JNI!</code>后面的注释也有给出</p>
+<pre><code>ADD R2, PC
+</code></pre>
+
+<p>将R3的值赋给R0，并且会影响标志位</p>
+<pre><code>MOVS R0, R3 
+</code></pre>
+
+<p>将R2的值赋给R1，并且会影响标志位</p>
+<pre><code>MOVS R1, R2
+</code></pre>
+
+<p>上面两步其实是为子函数做准备，将<code>*env</code>和<code>Hello from JNI!</code>进行传参，和之前说的一样，是用R0,R1保存前两个参数</p>
+<p>BL进行函数跳转，根据注释可以知道，调用的是_<code>JNIEnv::NewStringUTF(char const*)</code>函数，有兴趣可以跟过去分析，过程都差不多</p>
+<pre><code>BL  _ZN7_JNIEnv12NewStringUTFEPKc ; _JNIEnv::NewStringUTF(char const*)
+</code></pre>
+
+<p>NOP为空操作，就是啥也不干</p>
+<pre><code>MOVS R3, R0
+
+NOP
+
+MOVS R0, R3
+</code></pre>
+
+<p>这里将R7的值赋给SP，和我们之前说的一样</p>
+<pre><code>MOV SP, R7
+</code></pre>
+
+<p>这里SP = SP+8，回收调之前开辟的空间</p>
+<pre><code>ADD SP, SP, #8
+</code></pre>
+
+<p>出栈，此时LR的值保存到PC中，说明结束上述操作，开始下一条指令</p>
+<pre><code>POP {R7,PC}
+</code></pre>
+
+<p>函数结束</p>
+<pre><code>; End of function Java_myapplication_mask_com_myapplication_MainActivity_FromNative
+</code></pre>
+
+<hr />
+<p>汇编分析完了，我们再来看看伪代码，可以更好的理解刚刚的操作，F5大法好哇</p>
+<p><img src="./Image/7.png" /></p>
+<p>哗擦，居然识别出来了。。。。。。。还想演示一遍修复参数呢！！！！</p>
+<p>待我翻下刚刚C版本写的那个</p>
+<p><img src="./Image/8.png" /></p>
+<p>呐，稳，没识别出来23333</p>
+<hr />
+<p>开始修复</p>
+<p>之前说过，JNI函数的第一个参数一般默认是JNIEnv的结构体指针，那么这里我们要让IDA能够识别JNI结构体，我们需要导入一个JNI.h头文件（我的IDA好像自带），这个文件是啥，待会再说，这个IDA.h你可以去网上下载，其实NDK就自带这个</p>
+<p><img src="./Image/9.png" /></p>
+<p>导入该文件，成功会有提示，提示啥我忘了，反正会告诉你导入成功了</p>
+<p>然后</p>
+<p><img src="./Image/10.png" /></p>
+<p>修复参数类型，输入JNIEnv*</p>
+<p><img src="./Image/11.png" /></p>
+<p>我这里函数都给我识别出来了。。。，其实应该还有一步，如果你的函数没有正确识别的话，右键你的函数名，会显示Force call type，点击这个就能正确识别了 </p>
+<hr />
+<p>这里还有几个疑问没解决</p>
+<p>1.JNIEnv* env这个指针到底指向哪？</p>
+<p>2.JNI.h是干啥的？</p>
+<p>3.第二个参数类型何时是jclass何时是jobject</p>
+<h2>0x03 JNI.h</h2>
+<p>先来看看这个JNI.h是啥</p>
+<p><img src="./Image/12.png" /></p>
+<p>这里其实是一些数据类型转换，比如JAVA中的</p>
+<pre><code>#ifdef HAVE_INTTYPES_H
+# include &lt;inttypes.h&gt;  /* C99 */
+typedef uint8_t jboolean;   /* unsigned 8 bits */
+typedef int8_t  jbyte;  /* signed 8 bits */
+typedef uint16_tjchar;  /* unsigned 16 bits */
+typedef int16_t jshort; /* signed 16 bits */
+typedef int32_t jint;   /* signed 32 bits */
+typedef int64_t jlong;  /* signed 64 bits */
+typedef float   jfloat; /* 32-bit IEEE 754 */
+typedef double  jdouble;/* 64-bit IEEE 754 */
+#else
+typedef unsigned char   jboolean;   /* unsigned 8 bits */
+typedef signed char jbyte;  /* signed 8 bits */
+typedef unsigned short  jchar;  /* unsigned 16 bits */
+typedef short   jshort; /* signed 16 bits */
+typedef int jint;   /* signed 32 bits */
+typedef long long   jlong;  /* signed 64 bits */
+typedef float   jfloat; /* 32-bit IEEE 754 */
+typedef double  jdouble;/* 64-bit IEEE 754 */
+</code></pre>
+
+<p>这里是C和C++中的一些差别</p>
+<pre><code>#ifdef __cplusplus
+/*
+ * Reference types, in C++
+ */
+class _jobject {};
+class _jclass : public _jobject {};
+class _jstring : public _jobject {};
+class _jarray : public _jobject {};
+class _jobjectArray : public _jarray {};
+class _jbooleanArray : public _jarray {};
+class _jbyteArray : public _jarray {};
+class _jcharArray : public _jarray {};
+class _jshortArray : public _jarray {};
+class _jintArray : public _jarray {};
+class _jlongArray : public _jarray {};
+class _jfloatArray : public _jarray {};
+class _jdoubleArray : public _jarray {};
+class _jthrowable : public _jobject {};
+
+typedef _jobject*   jobject;
+typedef _jclass*jclass;
+typedef _jstring*   jstring;
+typedef _jarray*jarray;
+typedef _jobjectArray*  jobjectArray;
+typedef _jbooleanArray* jbooleanArray;
+typedef _jbyteArray*jbyteArray;
+typedef _jcharArray*jcharArray;
+typedef _jshortArray*   jshortArray;
+typedef _jintArray* jintArray;
+typedef _jlongArray*jlongArray;
+typedef _jfloatArray*   jfloatArray;
+typedef _jdoubleArray*  jdoubleArray;
+typedef _jthrowable*jthrowable;
+typedef _jobject*   jweak;
+
+
+#else /* not __cplusplus */
+
+/*
+ * Reference types, in C.
+ */
+typedef void*   jobject;
+typedef jobject jclass;
+typedef jobject jstring;
+typedef jobject jarray;
+typedef jarray  jobjectArray;
+typedef jarray  jbooleanArray;
+typedef jarray  jbyteArray;
+typedef jarray  jcharArray;
+typedef jarray  jshortArray;
+typedef jarray  jintArray;
+typedef jarray  jlongArray;
+typedef jarray  jfloatArray;
+typedef jarray  jdoubleArray;
+typedef jobject jthrowable;
+typedef jobject jweak;
+</code></pre>
+
+<p>简单看看就好，下面来看看关键</p>
+<p><img src="./Image/13.png" /></p>
+<p>这个就是*env所指向的结构体了，下面是它所包含的一系列函数，我们来找找之前的<code>NewStringUTF</code>函数</p>
+<p><img src="./Image/14.png" /></p>
+<p>呐，参数和我们刚刚在汇编分析时描述的一样。那么刚刚的第一个第二个问题算是解决了。但是细心的朋友肯定注意到了一个细节</p>
+<p>这个和JNIEnv在一块的另一个结构体是他娘的啥？凭这打破砂锅问到底的精神，我说</p>
+<p><img src="./Image/15.png" /></p>
+<p>这个JavaVM其实是虚拟机在JNI层的一个代表，一个进程中只有一个JavaVM,他是进程级的，那么相对的，JINEnv其实是线程级的。那么他们必然是有关系的，有啥关系？你等着</p>
+<p>看到这个JavaVm结构体了么？这里有个函数</p>
+<p><img src="./Image/16.png" /></p>
+<p>通过调用这个函数我们就可以获得这个线程的JNIEnv结构体，干嘛要获得？等你要的时候你就晓得了</p>
+<pre><code>jint AttachCurrentThread(JNIEnv** p_env, void* thr_args)
+</code></pre>
+
+<p>那么再来看看第三个问题，什么时候是jclass，什么时候是object？</p>
+<p>这个其实很好理解，在Java层，如果你声明的是一个static函数，那么他就是jclass，如果不是static函数，那就是jobject，很好理解的</p>
+<h2>0x04 函数注册</h2>
+<p>在JNI注册函数有两种注册方法，一种是静态注册，就是刚才演示的那种，在Java层声明，在JNI定义，下面来讲第二种，动态注册</p>
+<p>将动态注册前，先看看Java层是怎样找到JNI层中对应的函数的，之前说过JNI库中默认使用<code>Java_myapplication_mask_com_myapplication_MainActivity_FromNative</code>这种格式，那么可以理解为JNI会为库和java层建立某种联系，注册函数其实就是建立这种联系，然后进行查找，作用类似指针，其实你就可以理解为指针，那么JNI中是如何建立这种关系的呢？</p>
+<p>JNI.h中有这样一个结构体</p>
+<p><img src="./Image/17.png" /></p>
+<pre><code>typedef struct {
+const char* name; //函数名
+const char* signature;//签名信息
+void*   fnPtr;//这个就是函数对应的指针和上面说的吻合，果然是个指针
+} JNINativeMethod;
+</code></pre>
+
+<p>呐，找到这个关系了，怎么去注册呢？这就要分析源码了，源码位置在<code>\frameworks\base\core\jni\AndroidRunTime.cpp</code>,感兴趣可以看看</p>
+<p><img src="./Image/18.png" /></p>
+<pre><code>/*
+ * Register native methods using JNI.
+ */
+/*static*/ int AndroidRuntime::registerNativeMethods(JNIEnv* env,
+const char* className, const JNINativeMethod* gMethods, int numMethods)
+{
+return jniRegisterNativeMethods(env, className, gMethods, numMethods);
+}
+</code></pre>
+
+<p>可以看到这里回调了一个函数，行，我说</p>
+<p>诺，在这呢\dalvik\libnativehelper\JNIHelp.c</p>
+<p><img src="./Image/19.png" /></p>
+<pre><code>static jclass findClass(C_JNIEnv* env, const char* className) {
+JNIEnv* e = reinterpret_cast&lt;JNIEnv*&gt;(env);
+return (*env)-&gt;FindClass(e, className);
+}
+
+extern &quot;C&quot; int jniRegisterNativeMethods(C_JNIEnv* env, const char* className,
+const JNINativeMethod* gMethods, int numMethods)
+{
+JNIEnv* e = reinterpret_cast&lt;JNIEnv*&gt;(env);
+
+LOGV(&quot;Registering %s natives&quot;, className);
+
+scoped_local_ref&lt;jclass&gt; c(env, findClass(env, className));
+if (c.get() == NULL) {
+LOGE(&quot;Native registration unable to find class '%s', aborting&quot;, className);
+abort();
+}
+
+if ((*env)-&gt;RegisterNatives(e, c.get(), gMethods, numMethods) &lt; 0) {
+LOGE(&quot;RegisterNatives failed for '%s', aborting&quot;, className);
+abort();
+}
+
+return 0;
+}
+</code></pre>
+
+<p>绕了半天。。。又回到JNI去了23333</p>
+<p>那么我们动态注册的时候，只需要完成下面操作即可</p>
+<pre><code>jclass clazz = (*env) -&gt; FindClass(env,className);
+(*env) -&gt;RegisterNatives（env,clazz,gmethods,numMethods);
+</code></pre>
+
+<p>那么注册在哪操作呢？？？呐，需要在一个JNI_Onload()函数中，这个函数的第一个参数就是JavaVM* vm
+（动态注册必须实现这个函数，静态注册则不需要，但是这个函数通常可以用来初始化一些操作）</p>
+<h2>0x05 结语</h2>
+<p>这些只是新手自己的一些学习笔记，捋了捋思绪后稍微平静了些，那么也不早了</p>
+<h2>睡觉！！！！！</h2>
+
+</body>
+</html>
+<!-- This document was created with MarkdownPad, the Markdown editor for Windows (http://markdownpad.com) -->
